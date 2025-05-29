@@ -8,13 +8,14 @@
 ##  Date: May 11, 2025
 
 ###
-##  The following code can be copy-pasted into a working GAP session.
+##  Each section of the following code can be copy-pasted into a working GAP session.
 ##  The output of a command is given after a single '#'.
 ##  A comment is given after a double '#'.
 
 
 ###  
-##  The Monster 
+##  Section. The Monster M
+##
 ##  This section relates to the proof of [ Proposition 1  - check this reference ]
   
 OddPrimes_M :=  [ 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71 ];;     ## odd prime divisors of |M| 

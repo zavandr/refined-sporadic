@@ -133,4 +133,125 @@ Perform(result,function(tup) Print(tup,"\n"); end);                             
 # [ "Th", "2a", [ 3, 5, 7, 13, 19 ], [ 31 ] ]
 
 ##
+## Section. Elements of order bigger than 2
+
+## We consider the exceptional pairs (S,mX) with m > 2  and  α(x) > 2 from Theorem 1 [check reference !!!]
+## and find prime divisors r of |S| with nonzero multiplication coefficients ( mX, mX, nX ) for n divisible by r.
+
+## Column 3 of Table 2 [check reference !!!] of the paper is based on these calculations
+
+## First, we deal with the elements of order m = 3 :
+## Namely, for every exceptional pair (S,3X) we find all prime divisors r of |S|
+## such that r ≠ 3 and the product of some two representatives of 3X has order divisible by r
+
+
+pairs := [ ["J2","3a"],   ["McL","3a"],  ["Ly","3a"],   ["Co1","3a"],             ## Exceptional pairs [ <group_name>, <class_name_3X> ]
+           ["Fi22","3a"], ["Fi22","3b"], ["Fi23","3a"], ["Fi23","3b"],            ## with <group_name> being GAP's name of S and
+           ["F3+","3a"],  ["F3+","3b"],  ["Suz","3a"]  ];;                        ## <class_name_3X> the name of class 3X
+
+
+result:=[];                                                                       ## a list to collect the total result. Each member of this list is a quadruple
+                                                                                  ## [ <group_name>, <class_name_3X>, <FoundPrimes>, <OtherPrimes>], where 
+                                                                                  ##  <group_name> and <class_name_3X> are as above,
+                                                                                  ##  <FoundPrimes> is the list of prime divisors r ≠ 3 of |S| such that 
+                                                                                  ##  the product of some two representatives of 3X has order divisible by r,
+                                                                                  ##  <OtherPrimes> is the prime divisors ≠ 3 of |S| not in <FoundPrimes>
+
+for pair in pairs do 
+
+   CharTable := CharacterTable( pair[1] );                                        ## character table of current group 
+
+   ClassNamesG := ClassNames( CharTable );                                        ## names of conjugacy classes of current group
+
+   NumClasses := Size( ClassNamesG );                                             ## number of conjugacy classes   
+
+   pos_3X := Position( ClassNamesG, pair[2] );                                    ## position of class 3X
+
+   OrdersReps := OrdersClassRepresentatives( CharTable );                         ## orders of conjugacy class representatives
+
+   AllPrimesNot3 := Set( Filtered( OrdersReps,         
+                               o -> IsPrime(o) and not o = 3 ) );                 ## prime divisors other than 3 of the order of current group
+
+   PositionsNonZero := Filtered( [ 1..NumClasses ],  pos_nX -> 
+  
+     ClassMultiplicationCoefficient( CharTable, pos_3X, pos_3X, pos_nX ) <> 0 );  ## positions of classes nX with nonzero coefficients m(3X,3X,nX)
+   
+   OrderFactors := List( OrdersReps{PositionsNonZero}, Factors );                 ## factorized orders of elements in found classes
+    
+   FoundPrimesNot3 := Difference( Union(OrderFactors), [1,3]);                    ## prime divisors other than 3 of found orders
+
+     
+   OtherPrimesNot3 := Difference( AllPrimesNot3, FoundPrimesNot3 );               ## remaining primes ≠ 3
+  
+   Add( result, [ pair[1], pair[2] , FoundPrimesNot3, OtherPrimesNot3 ]);         ## collect the result
+ 
+od;
+
+Perform(result,function(tup) Print(tup,"\n"); end);                               ## print the result
+
+# [ "J2", "3a", [ 2, 5 ], [ 7 ] ]
+# [ "McL", "3a", [ 2, 5 ], [ 7, 11 ] ]
+# [ "Ly", "3a", [ 2, 5 ], [ 7, 11, 31, 37, 67 ] ]
+# [ "Co1", "3a", [ 2, 5 ], [ 7, 11, 13, 23 ] ]
+# [ "Fi22", "3a", [ 2, 5 ], [ 7, 11, 13 ] ]
+# [ "Fi22", "3b", [ 2, 5, 7, 13 ], [ 11 ] ]
+# [ "Fi23", "3a", [ 2, 5 ], [ 7, 11, 13, 17, 23 ] ]
+# [ "Fi23", "3b", [ 2, 5, 7, 13 ], [ 11, 17, 23 ] ]
+# [ "F3+", "3a", [ 2, 5 ], [ 7, 11, 13, 17, 23, 29 ] ]
+# [ "F3+", "3b", [ 2, 5, 7, 13 ], [ 11, 17, 23, 29 ] ]
+# [ "Suz", "3a", [ 2, 5 ], [ 7, 11, 13 ] ]
+
+
+## We now deal with elements of order m = 4 :
+## Namely, for every exceptional pair (Aut(S),4X) we find all odd prime divisors r of |S|
+## such that the product of some two representatives of 4X has order r
+
+
+pairs := [ ["HS","4a"], ["HN.2","4d"] ];;                                         ##  Exceptional pairs [ <group_name>, <class_name_4X> ]
+                                                                                  ##  with <group_name> being GAP's name of S and 
+                                                                                  ##  <class_name_4X> the name of class 4X
+
+result:=[];                                                                       ## a list to collect the total result. Each member of this list is a ....
+                                                                                  ## [ <group_name>, <class_name_4X>, <FoundPrimes>, <OtherPrimes>], where 
+                                                                                  ##  <group_name> and <class_name_4X> are as above,
+                                                                                  ##  <FoundPrimes> is the list of odd prime divisors r of |S| such that 
+                                                                                  ##  the product of some two representatives of 4X has order divisible by r,
+                                                                                  ##  <OtherPrimes> is the odd prime divisors of |S| not in <FoundPrimes>
+
+for pair in pairs do 
+
+   CharTable := CharacterTable( pair[1] );                                        ## character table of current group 
+
+   ClassNamesG := ClassNames( CharTable );                                        ## names of conjugacy classes of current group
+
+   NumClasses := Size( ClassNamesG );                                             ## number of conjugacy classes   
+
+   pos_4X := Position( ClassNamesG, pair[2] );                                    ## position of class 4X
+
+   OrdersReps := OrdersClassRepresentatives( CharTable );                         ## orders of conjugacy class representatives
+
+   AllOddPrimes := Set( Filtered( OrdersReps,         
+                               o -> IsPrime(o) and not o = 2 ) );                 ## odd prime divisors of the order of current group
+
+   PositionsNonZero := Filtered( [ 1..NumClasses ],  pos_nX -> 
+  
+     ClassMultiplicationCoefficient( CharTable, pos_4X, pos_4X, pos_nX ) <> 0 );  ## positions of classes nX with nonzero coefficients m(4X,4X,nX)
+   
+   OrderFactors := List( OrdersReps{PositionsNonZero}, Factors );                 ## factorized orders of elements in found classes
+    
+   FoundOddPrimes := Difference( Union(OrderFactors), [1,2]);                     ## odd prime divisors of found orders
+
+     
+   OtherOddPrimes := Difference( AllOddPrimes, FoundOddPrimes );                  ## remaining odd primes
+  
+   Add( result, [ pair[1], pair[2] , FoundOddPrimes, OtherOddPrimes ]);           ## collect the result
+ 
+od;
+
+Perform(result,function(tup) Print(tup,"\n"); end);                               ## print the result
+
+# [ "HS", "4a", [ 3, 5, 7 ], [ 11 ] ]
+# [ "HN.2", "4d", [ 3, 5, 7 ], [ 11, 19 ] ]
+
 ###
+

@@ -253,11 +253,11 @@ Perform(result,function(tup) Print(tup,"\n"); end);                             
 # [ "HS", "4a", [ 3, 5, 7 ], [ 11 ] ]
 # [ "HN.2", "4d", [ 3, 5, 7 ], [ 11, 19 ] ]
 
-###
+####
 ## Section. Proof of Lemma \ref{more_alpha}
 ##
 
-##  Case S = U5(2) 
+###  Case S = U5(2) 
 
 ## First, we show that α( U5(2), 3C ) ⩽ 3 
 
@@ -295,5 +295,48 @@ ForAll( ListMCentr, l -> l[1] < l[2] );   # true
 
 ## Conclusion: We have shown that α( U5(2), 3C ) = 3 
 ###
+
+###  Case S = U6(2) 
+
+###
+## We first prove that α( U6(2), 3b ) ⩽ 3 
+## by finding explicilty 3 generators of U6(3) in class 3b
+
+U6_2 := AtlasGroup("U6(2)");
+# <permutation group of size 9196830720 with 2 generators>
+gens := GeneratorsOfGroup(U6_2);;    
+a := gens[1];; b:= gens[2];;              ## standard generators of U6(2) 
+
+x := (a*b^2) ^ 6;;
+Order( x );                     # 3
+Size( Centralizer( U6_2, x ) ); # 46656   ## this confirms that x is in class 3b
+
+Size( Group( x, x^a, x^b ) );
+# 9196830720                              ## = |U6(2)|
+
+## This proves that α( U6(2), 3b ) ⩽ 3 
+###
+
+###
+##  We find all possibilities for S = U6(2) to be (3b,3b; nX)-generated using 
+##  the Di Martino--Pellegrini--Zalesski inequality  
+##   m(3b,3b,nX) >= |C_S(x)| with x in nX
+
+C := CharacterTable("U6(2)");;
+
+ClNames := ClassNames(C);                               ## names of conjugacy classes
+NClasses := Size(ClNames);
+
+PosIneqHolds := Filtered( [1..NClasses], n ->          ## positions of classes nX for which m(3b,3b,nX) >= |C_S(x)|
+   ClassMultiplicationCoefficient(C,C.3b,C.3b,n) >= 
+                         SizesCentralizers( C )[n] );;
+
+ClNames{PosIneqHolds}; # [ "7a", "9c" ]                ## found classes nX 
+
+## Conclusion: U6(2) may only be (3b,3b;nX)-generated for nX = 7a or 9c 
+###
+
+
+
 
 

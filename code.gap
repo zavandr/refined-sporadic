@@ -339,9 +339,9 @@ ClNames{PosIneqHolds}; # [ "7a", "9c" ]                ## found classes nX
 ###
 ##  Checking that in SU6(2), we have  
 ##
-##  m( 3f, 3f, 27a) > 0 
-##  m( 3f, 3f, 21a) = 0 
-##  m( 3f, 3f, 21b) = 0 
+##  m( 3f, 3f, 7a )  > 0 
+##  m( 3f, 3f, 21a ) = 0 
+##  m( 3f, 3f, 21b ) = 0 
 ##
 ## as claimed in the proof of subcase nX=7A of Lemma  \ref{more_alpha}
 

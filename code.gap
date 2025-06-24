@@ -318,25 +318,38 @@ Size( Group( x, x^a, x^b ) );
 ###
 
 ###
-##  We find all possibilities for S = U6(2) to be (3b,3b; nX)-generated using 
+##  We find all possibilities for S = U6(2) to be ( 3b, 3b; nX )-generated using 
 ##  the Di Martino--Pellegrini--Zalesski inequality  
-##   m(3b,3b,nX) >= |C_S(x)| with x in nX
+##   m( 3b, 3b, nX ) >= |C_S(x)| with x in nX
 
 C := CharacterTable("U6(2)");;
 
 ClNames := ClassNames(C);                               ## names of conjugacy classes
 NClasses := Size(ClNames);
 
-PosIneqHolds := Filtered( [1..NClasses], n ->          ## positions of classes nX for which m(3b,3b,nX) >= |C_S(x)|
-   ClassMultiplicationCoefficient(C,C.3b,C.3b,n) >= 
+PosIneqHolds := Filtered( [1..NClasses], n ->          ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
+   ClassMultiplicationCoefficient( C, C.3b, C.3b, n ) >= 
                          SizesCentralizers( C )[n] );;
 
 ClNames{PosIneqHolds}; # [ "7a", "9c" ]                ## found classes nX 
 
-## Conclusion: U6(2) may only be (3b,3b;nX)-generated for nX = 7a or 9c 
+## Conclusion: U6(2) may only be ( 3b, 3b; nX )-generated for nX = 7a or 9c 
 ###
 
+###
+##  Checking that in SU6(2), we have  
+##
+##  m( 3f, 3f, 27a) > 0 
+##  m( 3f, 3f, 21a) = 0 
+##  m( 3f, 3f, 21b) = 0 
+##
+## as claimed in the proof of subcase nX=7A of Lemma  \ref{more_alpha}
 
+C := CharacterTable("3.U6(2)");;                                  ## character table of SU6(2)
+ClassMultiplicationCoefficient( C, C.3f, C.3f, C.7a );    # 7    
+ClassMultiplicationCoefficient( C, C.3f, C.3f, C.21a );   # 0
+ClassMultiplicationCoefficient( C, C.3f, C.3f, C.21b );   # 0
 
+### the claim holds
 
 

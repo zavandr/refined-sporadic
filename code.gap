@@ -353,3 +353,163 @@ ClassMultiplicationCoefficient( C, C.3f, C.3f, C.21b );   # 0
 ### the claim holds
 
 
+### Section. Elements of order bigger than 2
+##
+## In this section, we find various class fusions that are claimed to hold 
+## in Section "Elements of order bigger than 2" [ check reference !!!] of the paper
+##
+
+##
+##  1. Fusions into class 3B of Fi_22 from its maximal subgroups 2.U6(2), 2^10:M22, and M12  
+## 
+
+CT_Fi22     := CharacterTable( "Fi22" );;                                    ## character tables
+CT_2U6_2    := CharacterTable("Fi22M1");  #  CharacterTable( "2.U6(2)"  )    ## of Fi22     
+CT_2e10M22  := CharacterTable("Fi22M5");  #  CharacterTable( "2^10:m22" )    ## and its maximal subgroups 
+CT_M12      := CharacterTable("M12"   );;                                    ## 2.U6(2), 2^10:M22, and M12  
+
+
+ClNames_Fi22    := ClassNames( CT_Fi22    );;                                ## names 
+ClNames_2U6_2   := ClassNames( CT_2U6_2   );;                                ## of conjugacy
+ClNames_2e10M22 := ClassNames( CT_2e10M22 );;                                ## classes
+ClNames_M12     := ClassNames( CT_M12     );;                                ## 
+
+NrClasses_2U6_2   := Size( ClNames_2U6_2   );   # 77                         ## numbers of
+NrClasses_2e10M22 := Size( ClNames_2e10M22 );   # 43                         ## conjugacy 
+NrClasses_M12     := Size( ClNames_M12     );   # 15                         ## classes 
+
+PosClasses3_2U6_2    :=  Filtered( [1..NrClasses_2U6_2  ],                   ## positions of
+                   n -> OrdersClassRepresentatives(CT_2U6_2  )[n] = 3 );;    ## conjugacy
+PosClasses3_2e10M22  :=  Filtered( [1..NrClasses_2e10M22],                   ## classes  
+                   n -> OrdersClassRepresentatives(CT_2e10M22)[n] = 3 );;    ## of elements                  
+PosClasses3_M12      :=  Filtered( [1..NrClasses_M12    ],                   ## of order 3  
+                   n -> OrdersClassRepresentatives(CT_M12    )[n] = 3 );;    ##                    
+
+ClNames_2U6_2  { PosClasses3_2U6_2   };   #   [ "3a", "3b", "3c" ]           ## names of conjugacy 
+ClNames_2e10M22{ PosClasses3_2e10M22 };   #   [ "3a" ]                       ## classes of elements 
+ClNames_M12    { PosClasses3_M12     };   #   [ "3a", "3b" ]                 ## of order 3
+
+PCFs_2U6_2   := PossibleClassFusions( CT_2U6_2  , CT_Fi22 );;                ## possible class fusions
+PCFs_2e10M22 := PossibleClassFusions( CT_2e10M22, CT_Fi22 );;                ## from maximal subgroups
+PCFs_M12     := PossibleClassFusions( CT_M12    , CT_Fi22 );;                ## into Fi22
+
+
+## Printing fusions of elements of order 3 into Fi22
+
+## Fusion for 2.U6(2) :
+
+for pos in PosClasses3_2U6_2 do
+   Print( "  ", ClNames_2U6_2[pos], " -> ", Set( PCFs_2U6_2, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3b" ]   
+#  3c -> [ "3c" ]        ##  Conclusion:  Only 3b of 2.U6(2) fuses into 3B of Fi22
+
+
+## Fusion for 2^10:M22 :
+
+for pos in PosClasses3_2e10M22 do
+   Print( "  ", ClNames_2e10M22[pos], " -> ", Set( PCFs_2e10M22, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3c" ]        ##  Conclusion:  No fusion from 2^10:M22 into 3B of Fi22
+
+
+## Fusion for M12 :
+
+for pos in PosClasses3_M12 do
+   Print( "  ", ClNames_M12[pos], " -> ", Set( PCFs_M12, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3d" ]
+#  3b -> [ "3c" ]        ##  Conclusion:  No fusion from M12 into 3B of Fi22
+
+##
+##  2. Fusions into class 3B of U6(2) from its maximal subgroups U5(2) and M12  
+## 
+
+CT_U6_2 := CharacterTable( "U6(2)" );;                                   ## character tables
+CT_U5_2 := CharacterTable( "U5(2)" );;                                   ## of U6(2)     
+CT_M22  := CharacterTable( "M22"   );;                                   ## and its maximal
+
+
+ClNames_U6_2 := ClassNames( CT_U6_2 );;                                  ## names 
+ClNames_U5_2 := ClassNames( CT_U5_2 );;                                  ## of conjugacy
+ClNames_M22  := ClassNames( CT_M22  );;                                  ## classes
+
+NrClasses_U5_2 := Size( ClNames_U5_2 );  #  47                           ## numbers of
+NrClasses_M22  := Size( ClNames_M22  );  #  12                           ## conjugacy 
+
+PosClasses3_U5_2 := Filtered( [1..NrClasses_U5_2  ],                     ## positions of
+               n -> OrdersClassRepresentatives( CT_U5_2 )[n] = 3  );;    ## conjugacy classes
+PosClasses3_M22  := Filtered( [1..NrClasses_M22],                        ## of elements
+               n -> OrdersClassRepresentatives( CT_M22 )[n] = 3  );;     ## of order 3  
+
+ClNames_U5_2{ PosClasses3_U5_2 };                                        ##
+# [ "3a", "3b", "3c", "3d", "3e", "3f" ]                                 ## names of conjugacy classes 
+ClNames_M22 { PosClasses3_M22  };                                        ## of elements of order 3 
+# [ "3a" ]                                                               ##
+
+PCFs_U5_2 := PossibleClassFusions( CT_U5_2  , CT_U6_2 );;                ## possible class fusions
+PCFs_M22  := PossibleClassFusions( CT_M22, CT_U6_2 );;                   ## from maximal subgroups
+
+
+## Printing fusions of elements of order 3 into U6(2)
+
+## Fusion for U5(2) :
+
+for pos in PosClasses3_U5_2 do
+   Print( "  ", ClNames_U5_2[pos], " -> ", Set( PCFs_U5_2, cf -> ClNames_U6_2[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3a" ]
+#  3c -> [ "3b" ]
+#  3d -> [ "3b" ]
+#  3e -> [ "3a" ]
+#  3f -> [ "3c" ]     ##  Conclusion:  Classes 3c and 3d of U5(2) fuse into 3B of U6(2)
+
+## Fusion for M22 :
+
+for pos in PosClasses3_M22 do
+   Print( "  ", ClNames_M22[pos], " -> ", Set( PCFs_M22, cf -> ClNames_U6_2[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3c" ]      ##  Conclusion:   No fusion from M22 into 3B of U6(2)
+
+
+##
+##  3. Fusions into classes 3B and 3C of U5(2) from its maximal subgroup L2(11)
+## 
+
+
+CT_U5_2  := CharacterTable( "U5(2)"  );;                                 ## character tables of U5(2)
+CT_L2_11 := CharacterTable( "L2(11)" );;                                 ## and its maximal subgroup L2(11)
+
+ClNames_U5_2 := ClassNames( CT_U5_2 );;                                  ## names 
+ClNames_L2_11 := ClassNames( CT_L2_11 );;                                ## of conjugacy classes
+
+NrClasses_L2_11 := Size( ClNames_L2_11 );  #  8                          ## number of conjugacy 
+
+PosClasses3_L2_11 := Filtered( [1..NrClasses_L2_11  ],                   ## positions of conjugacy
+               n -> OrdersClassRepresentatives( CT_L2_11 )[n] = 3  );;   ## classes of elements of order 3
+
+ClNames_L2_11{ PosClasses3_L2_11 }; #  [ "3a" ]                          ## names of conjugacy classes 
+                                                                         ## of elements of order 3 
+
+PCFs_L2_11 := PossibleClassFusions( CT_L2_11  , CT_U5_2 );;              ## possible class fusions from maximal subgroup
+
+
+## Printing fusions from L2(11) of elements of order 3 into U5(2) 
+
+for pos in PosClasses3_L2_11 do
+   Print( "  ", ClNames_L2_11[pos], " -> ", Set( PCFs_L2_11, cf -> ClNames_U5_2[ cf[ pos ] ]), "\n"  );
+od;
+
+#   3a -> [ "3f" ]    ##  Conclusion:   No fusion from L2(11) into either 3B or 3C of U5(2)
+
+###
+#####
+
+

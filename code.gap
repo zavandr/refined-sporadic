@@ -204,7 +204,7 @@ Perform(result,function(tup) Print(tup,"\n"); end);                             
 
 ## We now deal with elements of order m = 4 :
 ## Namely, for every exceptional pair (Aut(S),4X) we find all odd prime divisors r of |S|
-## such that the product of some two representatives of 4X has order r
+## such that the product of some two representatives of 4X has order divisible by r
 
 
 pairs := [ ["HS","4a"], ["HN.2","4d"] ];;                                         ##  Exceptional pairs [ <group_name>, <class_name_4X> ]

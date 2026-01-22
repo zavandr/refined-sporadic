@@ -261,10 +261,10 @@ Perform(result,function(tup) Print(tup,"\n"); end);                             
 
 ## First, we show that α( U5(2), 3C ) ⩽ 3 
 
-CharTab := CharacterTable("U5(2)");;                                                        ##  character table of U5(2)
+CharTab_U5_2 := CharacterTable("U5(2)");;                                                        ##  character table of U5(2)
 
-ClassMultiplicationCoefficient( CharTab, CharTab.3c, CharTab.3c,  CharTab.12a );  #  16     ##  = m( 3C,  3C, 12A )
-ClassMultiplicationCoefficient( CharTab, CharTab.3c, CharTab.12a, CharTab.11a );  #  22     ##  = m( 3C, 12A, 11A )
+ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.3c,  CharTab_U5_2.12a );  #  16     ##  = m( 3C,  3C, 12A )
+ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.12a, CharTab_U5_2.11a );  #  22     ##  = m( 3C, 12A, 11A )
 
 ## As the only maximal subgroup of U5(2) of order divisible by 11 is L2(11)
 ## which contains no elements of order 12, there are three elements in class 3C
@@ -272,11 +272,11 @@ ClassMultiplicationCoefficient( CharTab, CharTab.3c, CharTab.12a, CharTab.11a );
 
 ## We now show that α( U5(2), 3C ) > 2
 
-NumCC := Size( Irr( CharTab ) );;                                                ## number of conjugacy classes  
+NrClasses_U5_2 := Size( Irr( CharTab_U5_2 ) );;                                                          ## number of conjugacy classes  
 
-ListMCentr := List( [1..NumCC], n ->                                             ## list of pairs [ m( 3C, 3C, nX ), |C(x)| ] 
-     [ ClassMultiplicationCoefficient( CharTab, CharTab.3c, CharTab.3c, n ),     ##           with x ∊ nX for every class nX 
-       SizesCentralizers( CharTab )[n]
+ListMCentr := List( [1..NrClasses_U5_2], n ->                                                            ## list of pairs [ m( 3C, 3C, nX ), |C(x)| ] 
+     [ ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.3c, n ),              ##           with x ∊ nX for every class nX 
+       SizesCentralizers( CharTab_U5_2 )[n]
      ] );
 
 # [ [ 0, 13685760 ], [ 0, 82944 ], [ 0, 4608 ], [ 240, 77760 ], [ 0, 77760 ], [ 0, 3888 ], [ 82, 3888 ], [ 0, 1944 ], [ 2, 324 ], [ 0, 1152 ], [ 0, 384 ], 

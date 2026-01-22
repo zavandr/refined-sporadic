@@ -368,7 +368,7 @@ ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_
 CharTable_Fi22     := CharacterTable( "Fi22" );;                                    ## character tables
 CharTable_2U6_2    := CharacterTable("Fi22M1");  #  CharacterTable( "2.U6(2)"  )    ## of Fi22     
 CharTable_2e10M22  := CharacterTable("Fi22M5");  #  CharacterTable( "2^10:m22" )    ## and its maximal subgroups 
-CharTable_M12      := CharacterTable("M12"   );;                                    ## 2.U6(2), 2^10:M22, and M12  
+CharTable_M12      := CharacterTable("Fi22M14"); #  CharacterTable( "M12" )         ## 2.U6(2), 2^10:M22, and M12  
 
 
 ClNames_Fi22    := ClassNames( CharTable_Fi22    );;                                ## names 
@@ -376,25 +376,24 @@ ClNames_2U6_2   := ClassNames( CharTable_2U6_2   );;                            
 ClNames_2e10M22 := ClassNames( CharTable_2e10M22 );;                                ## classes
 ClNames_M12     := ClassNames( CharTable_M12     );;                                ## 
 
-NrClasses_2U6_2   := Size( ClNames_2U6_2   );   # 77                         ## numbers of
-NrClasses_2e10M22 := Size( ClNames_2e10M22 );   # 43                         ## conjugacy 
-NrClasses_M12     := Size( ClNames_M12     );   # 15                         ## classes 
+NrClasses_2U6_2   := Size( ClNames_2U6_2   );   # 77                                ## numbers of
+NrClasses_2e10M22 := Size( ClNames_2e10M22 );   # 43                                ## conjugacy 
+NrClasses_M12     := Size( ClNames_M12     );   # 15                                ## classes 
 
-PosClasses3_2U6_2    :=  Filtered( [1..NrClasses_2U6_2  ],                   ## positions of
+PosClasses3_2U6_2    :=  Filtered( [1..NrClasses_2U6_2  ],                          ## positions of
                    n -> OrdersClassRepresentatives(CharTable_2U6_2  )[n] = 3 );;    ## conjugacy
-PosClasses3_2e10M22  :=  Filtered( [1..NrClasses_2e10M22],                   ## classes  
+PosClasses3_2e10M22  :=  Filtered( [1..NrClasses_2e10M22],                          ## classes  
                    n -> OrdersClassRepresentatives(CharTable_2e10M22)[n] = 3 );;    ## of elements                  
-PosClasses3_M12      :=  Filtered( [1..NrClasses_M12    ],                   ## of order 3  
+PosClasses3_M12      :=  Filtered( [1..NrClasses_M12    ],                          ## of order 3  
                    n -> OrdersClassRepresentatives(CharTable_M12    )[n] = 3 );;    ##                    
 
-ClNames_2U6_2  { PosClasses3_2U6_2   };   #   [ "3a", "3b", "3c" ]           ## names of conjugacy 
-ClNames_2e10M22{ PosClasses3_2e10M22 };   #   [ "3a" ]                       ## classes of elements 
-ClNames_M12    { PosClasses3_M12     };   #   [ "3a", "3b" ]                 ## of order 3
+ClNames_2U6_2  { PosClasses3_2U6_2   };   #   [ "3a", "3b", "3c" ]                  ## names of conjugacy 
+ClNames_2e10M22{ PosClasses3_2e10M22 };   #   [ "3a" ]                              ## classes of elements 
+ClNames_M12    { PosClasses3_M12     };   #   [ "3a", "3b" ]                        ## of order 3
 
-PCFs_2U6_2   := PossibleClassFusions( CharTable_2U6_2  , CharTable_Fi22 );;                ## possible class fusions
-PCFs_2e10M22 := PossibleClassFusions( CharTable_2e10M22, CharTable_Fi22 );;                ## from maximal subgroups
-PCFs_M12     := PossibleClassFusions( CharTable_M12    , CharTable_Fi22 );;                ## into Fi22
-
+PCFs_2U6_2   := PossibleClassFusions( CharTable_2U6_2  , CharTable_Fi22 );;         ## possible class fusions
+PCFs_2e10M22 := PossibleClassFusions( CharTable_2e10M22, CharTable_Fi22 );;         ## from maximal subgroups
+PCFs_M12     := PossibleClassFusions( CharTable_M12    , CharTable_Fi22 );;         ## into Fi22
 
 ## Printing fusions of elements of order 3 into Fi22
 

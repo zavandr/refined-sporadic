@@ -322,16 +322,16 @@ Size( Group( x, x^a, x^b ) );
 ##  the Di Martino--Pellegrini--Zalesski inequality  
 ##   m( 3b, 3b, nX ) >= |C_S(x)| with x in nX
 
-C := CharacterTable("U6(2)");;
+CharTab_U6_2 := CharacterTable("U6(2)");;
 
-ClNames := ClassNames(C);                               ## names of conjugacy classes
-NClasses := Size(ClNames);
+ClNames_U6_2 := ClassNames(CharTab_U6_2);;                           ## names of conjugacy classes
+NrClasses_U6_2 := Size(ClNames_U6_2);
 
-PosIneqHolds := Filtered( [1..NClasses], n ->          ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
-   ClassMultiplicationCoefficient( C, C.3b, C.3b, n ) >= 
-                         SizesCentralizers( C )[n] );;
+PosIneqHolds := Filtered( [1..NrClasses_U6_2], n ->                  ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
+   ClassMultiplicationCoefficient( CharTab_U6_2, CharTab_U6_2.3b, CharTab_U6_2.3b, n ) >= 
+                         SizesCentralizers( CharTab_U6_2 )[n] );;
 
-ClNames{PosIneqHolds}; # [ "7a", "9c" ]                ## found classes nX 
+ClNames_U6_2{PosIneqHolds}; # [ "7a", "9c" ]                         ## found classes nX 
 
 ## Conclusion: U6(2) may only be ( 3b, 3b; nX )-generated for nX = 7a or 9c 
 ###
@@ -345,12 +345,14 @@ ClNames{PosIneqHolds}; # [ "7a", "9c" ]                ## found classes nX
 ##
 ## as claimed in the proof of subcase nX=7A of Lemma  \ref{more_alpha}
 
-C := CharacterTable("3.U6(2)");;                                  ## character table of SU6(2)
-ClassMultiplicationCoefficient( C, C.3f, C.3f, C.7a );    # 7    
-ClassMultiplicationCoefficient( C, C.3f, C.3f, C.21a );   # 0
-ClassMultiplicationCoefficient( C, C.3f, C.3f, C.21b );   # 0
+CharTab_3_U6_2 := CharacterTable("3.U6(2)");;                        ## character table of SU6(2)
+ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_2.3f, CharTab_3_U6_2.7a );    # 7    
+ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_2.3f, CharTab_3_U6_2.21a );   # 0
+ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_2.3f, CharTab_3_U6_2.21b );   # 0
 
-### the claim holds
+## Conclusion: U6(2) may only be ( 3b, 3b; nX )-generated for nX = 7a or 9c 
+###
+### The claim holds
 
 
 ### Section. Elements of order bigger than 2

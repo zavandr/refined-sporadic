@@ -9,7 +9,7 @@
 
 ###
 ##  Each section of the following code can be copy-pasted into a working GAP session.
-##  The output of a command is given after a single '#'.
+##  GAP's output of a command is given after a single '#'.
 ##  A comment is given after a double '#'.
 
 ###
@@ -690,11 +690,13 @@ for pos in PosClasses3_PGL2_7 do
 od;
 
 #  3a -> [ "3b" ]   ##  Conclusion:  No elements of order 3 of PGL2(7) fuse to 3a of J2
-
+###
 
 ###
+## Section 13.
+##
 ##  Proving that no (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
-##  as claimed in the proof of [ Cases (Suz,3A,7)  and  (Suz,3A,13)  <- Reference !!! ] 
+##  as claimed in the proof of [ Cases (Suz,3A,7)  and  (Suz,3A,13)  of Theorem \ref{main}  ] 
 
 G2_4 := AtlasGroup("G2(4)");                    ## G2(4)
 # <permutation group of size 251596800 with 2 generators>
@@ -716,21 +718,26 @@ List(Orbs,Size);                                ## sizes of orbits
 # [ 1008, 945, 945, 1008, 63, 63, 63, 63, 1, 1 ]
 
 2Groups := List( Orbs, o -> 
-        Group( c, Representative(o) ) );;      ## representatives of 2-generated subgroups < c, c^g >, g ∊ G2(4)
+        Group( c, Representative(o) ) );;      ## representatives of 2-generated subgroups < c, c^g >, g in G2(4)
 
 List(2Groups,Size);  # [ 24, 60, 60, 24, 12, 12, 12, 12, 3, 3 ]
 
-### Conclusion: No (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
-
+## Conclusion: No (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
+###
 
 ###
-##  Proving that no (3a,3a)-generated subgroup of U4(3) has order divisible by either 7.
-##  as claimed in the proof of [ Case (Suz,3A,7)  <- Reference !!! ] 
+## Section 14.
+##
+##  Proving that no (3a,3a)-generated subgroup of U4(3) has order divisible by 7.
+##  as claimed in the proof of [ Case (Suz,3A,7)  of Theorem \ref{main} ] 
+
+##  Standard generators of U4(3) are a and b where a has order 2, b is in class 6A, ab has order 7 and abababbababb has order 5.
 
 U4_3 := AtlasGroup("U4(3)");                       ## U4(3)
 # <matrix group of size 3265920 with 2 generators>
 Gens_U4_3 := GeneratorsOfGroup(U4_3);;
 a := Gens_U4_3[1];; b:= Gens_U4_3[2];;             ## standard generators
+List([ a, b, a*b, (a*b)^3*(b*a)^2*b^2 ], Order);  #  [ 2, 6, 7, 5 ] 
 
 ## Constructing a representative of class 3a of U4(3)
 
@@ -746,16 +753,18 @@ Orbs := OrbitsDomain(  Centr_c, Conj );;
 NOrbs := Size(Orbs); #  6                           ## number of orbits
 
 2GroupsSizes := List( Orbs, o -> Size( Group( c, Representative(o) ) ) );
-# [ 24, 24, 9, 9, 3, 3 ]                            ##  Orders of 2-generated subgroups < c, c^g >, g ∊ U4_3
+# [ 24, 24, 9, 9, 3, 3 ]                            ##  Orders of 2-generated subgroups < c, c^g >, g in U4_3
 
-### Conclusion:  There are no (3a,3a)-generated subgroups in U4(3) of order divisible by 7
-
+## Conclusion:  There are no (3a,3a)-generated subgroups in U4(3) of order divisible by 7.
+###
 
 ###
-##  Proving that no (3a,3a)-generated subgroup of U3(3) has order divisible by either 7.
+## Section 15.
+## 
+##  Proving that no (3a,3a)-generated subgroup of U3(3) has order divisible by 7.
 ##  as claimed in the proof of [ Case (Suz,3A,7)  <- Reference !!! ] 
 
-# Standard generators of U3(3) are a and b where a has order 2, b has order 6 and ab has order 7.
+##  Standard generators of U3(3) are a and b where a has order 2, b has order 6 and ab has order 7.
 
 U3_3 := AtlasGroup("U3(3)");;
 Gens_U3_3 := GeneratorsOfGroup(U3_3);;
@@ -768,11 +777,11 @@ Order(c);                  # 3
 Size(Centralizer(U3_3,c)); # 108                      ## => c is in class 3a
 
 Conj := ConjugacyClass(U3_3,c);;
-Set(Combinations(Elements(Conj),2),k-> Size(Group(k))); # Sizes of (3a,3a)-generated subgroups of U3(3)
+Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-generated subgroups of U3(3)
 # [ 3, 24 ]
 
-### Conclusion: There are no (3a,3a)-generated subgroups in U3(3) of order divisible by 7
-
+## Conclusion: There are no (3a,3a)-generated subgroups in U3(3) of order divisible by 7
+###
 
 ###
 ##  Analysing class sizes of elements of order 3 

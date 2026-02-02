@@ -205,14 +205,15 @@ Size( Group( x, x^a, x^b ) );
 
 ###
 ## Section 5.
+##
 ##  We find all possibilities for S = U6(2) to be ( 3b, 3b; nX )-generated using 
 ##  the Di Martino--Pellegrini--Zalesski inequality  
 ##   m( 3b, 3b, nX ) >= |C_S(x)| with x in nX
 
 CharTab_U6_2 := CharacterTable("U6(2)");;
 
-ClNames_U6_2 := ClassNames(CharTab_U6_2);;                           ## names of conjugacy classes
-NrClasses_U6_2 := Size(ClNames_U6_2);
+ClNames_U6_2 := ClassNames(CharTab_U6_2);;                           ## names of conjugacy classes of U6(2)
+NrClasses_U6_2 := Size(ClNames_U6_2);                                ## number of conjugacy classes
 
 PosIneqHolds := Filtered( [1..NrClasses_U6_2], n ->                  ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
    ClassMultiplicationCoefficient( CharTab_U6_2, CharTab_U6_2.3b, CharTab_U6_2.3b, n ) >= 
@@ -224,6 +225,8 @@ ClNames_U6_2{PosIneqHolds}; # [ "7a", "9c" ]                         ## found cl
 ###
 
 ###
+## Section 6.
+##
 ##  Checking that in SU6(2), we have  
 ##
 ##  m( 3f, 3f, 7a )  > 0 
@@ -239,17 +242,11 @@ ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_
 
 ## Conclusion: U6(2) may only be ( 3b, 3b; nX )-generated for nX = 7a or 9c 
 ###
-### The claim holds
 
-
-### Section. Elements of order bigger than 2
+### 
+## Section 7. 
 ##
-## In this section, we find various class fusions that are claimed to hold 
-## in Section "Elements of order bigger than 2" [ check reference !!!] of the paper
-##
-
-##
-##  1. Fusions into class 3B of Fi_22 from its maximal subgroups 2.U6(2), 2^10:M22, and M12  
+##  Fusion into class 3B of Fi_22 from its maximal subgroups 2.U6(2), 2^10:M22, and M12  
 ## 
 
 CharTable_Fi22     := CharacterTable( "Fi22" );;                                    ## character tables
@@ -313,8 +310,10 @@ od;
 #  3a -> [ "3d" ]
 #  3b -> [ "3c" ]        ##  Conclusion:  No fusion from M12 into 3B of Fi22
 
+###
+## Section 8.
 ##
-##  2. Fusions into class 3B of U6(2) from its maximal subgroups U5(2) and M12  
+##  Fusion into class 3B of U6(2) from its maximal subgroups U5(2) and M12  
 ## 
 
 CharTable_U6_2 := CharacterTable( "U6(2)" );;                             ## character tables
@@ -366,9 +365,10 @@ od;
 
 #  3a -> [ "3c" ]      ##  Conclusion:   No fusion from M22 into 3B of U6(2)
 
-
+###
+## Section 9.
 ##
-##  3. Fusions into classes 3B and 3C of U5(2) from its maximal subgroup L2(11)
+##  Fusion into classes 3B and 3C of U5(2) from its maximal subgroup L2(11)
 ## 
 
 

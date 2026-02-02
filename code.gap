@@ -12,13 +12,13 @@
 ##  The output of a command is given after a single '#'.
 ##  A comment is given after a double '#'.
 
-##
-## Section. Elements of order bigger than 2
+###
+## Section. 
 
-## We consider the exceptional pairs (S,mX) with m > 2  and  α(x) > 2 from Theorem 1 [check reference !!!]
+## We consider the exceptional pairs (S,mX) with m > 2  and  α(x) > 2 from Theorem 4 [check reference !!!]
 ## and find prime divisors r of |S| with nonzero multiplication coefficients ( mX, mX, nX ) for n divisible by r.
 
-## Column 3 of Table 2 [check reference !!!] of the paper is based on these calculations
+## Column 3 of Table 1 [check reference !!!] of the paper is based on these calculations
 
 ## First, we deal with the elements of order m = 3 :
 ## Namely, for every exceptional pair (S,3X) we find all prime divisors r of |S|

@@ -394,3 +394,687 @@ od;
 #####
 
 
+### Section.
+##  Checking that there are three elements in 3A whose product has order 7 and 13
+##  as claimed in the proofs of cases  (Suz,3A,r), r = 7, 13
+
+CharTable_Suz  := CharacterTable("Suz");                           ## character tables of Suz
+
+ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
+                                          CharTable_Suz.3a, 
+                                          CharTable_Suz.3a, 
+                                          CharTable_Suz.7a ] );    ##  n( 3A, 3A, 3A, 7A )
+# 16738231910400     
+
+## Conclusion:  The product of three elements in 3A has order 7 
+## => β_{Suz,7}(3A) ⩽ 3
+
+ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
+                                          CharTable_Suz.3a, 
+                                          CharTable_Suz.3a, 
+                                          CharTable_Suz.13a ] );    ##  n( 3A, 3A, 3A, 13A )
+
+# 5828491468800
+
+## Conclusion: The product of three elements in 3A has order 13
+## => β_{Suz,13}(3A) ⩽ 3
+
+###  SEction
+##
+##   Fusions into class 3A of Suz from its maximal subgroups 
+##   G2(4),  3_2.U4(3):2'_3,  U5(2),  3^5:M11,  J2:2,  (A4 × L3(4)):2,  M12:2,  L3(3):2,  L2(25),  A7
+## 
+##   This is required for considering the cases (Suz,3A,7), (Suz,3A,11),  and (Suz,3A,13)
+
+CharTable_Suz   := CharacterTable("Suz");;                                         ## character tables of Suz and its maximal subgroups
+CharTable_G2_4  := CharacterTable("SuzM1");  # CharacterTable( "G2(4)" )           ## G2(4),
+CharTable_SuzM2 := CharacterTable("SuzM2");  # CharacterTable( "3_2.U4(3).2_3'" )  ## 3_2.U4(3):2'_3,
+CharTable_U5_2  := CharacterTable("SuzM3");  # CharacterTable( "U5(2)" )           ## U5(2),
+CharTable_SuzM5 := CharacterTable("SuzM5");  # CharacterTable( "3^5:M11" )         ## 3^5:M11,
+CharTable_SuzM6 := CharacterTable("SuzM6");  # CharacterTable( "J2.2" )            ## J2:2,
+CharTable_SuzM8 := CharacterTable("SuzM8");  # CharacterTable( "(a4xpsl(3,4)):2" ) ## (A4 x L3(4)):2,
+CharTable_SuzM10:= CharacterTable("SuzM10"); # CharacterTable( "M12.2" )           ## M12:2,
+CharTable_L3_3_2:= CharacterTable("L3(3).2");                                      ## L3(3):2,
+CharTable_L2_25 := CharacterTable("SuzM16"); # CharacterTable( "L2(25)" )          ## L2(25),
+CharTable_A7    := CharacterTable("SuzM17"); # CharacterTable( "A7" )              ## A7
+
+ClNames_Suz     := ClassNames( CharTable_Suz    );;                                ## names
+ClNames_G2_4    := ClassNames( CharTable_G2_4   );;                                ## of conjugacy 
+ClNames_SuzM2   := ClassNames( CharTable_SuzM2  );;                                ## classes
+ClNames_U5_2    := ClassNames( CharTable_U5_2   );;                                ##
+ClNames_SuzM5   := ClassNames( CharTable_SuzM5  );;                                ##
+ClNames_SuzM6   := ClassNames( CharTable_SuzM6  );;                                ## 
+ClNames_SuzM8   := ClassNames( CharTable_SuzM8  );;                                ##  
+ClNames_SuzM10  := ClassNames( CharTable_SuzM10 );;                                ## 
+ClNames_L3_3_2  := ClassNames( CharTable_L3_3_2 );;                                ## 
+ClNames_L2_25   := ClassNames( CharTable_L2_25  );;                                ##
+ClNames_A7      := ClassNames( CharTable_A7     );;                                ##  
+
+NrClasses_G2_4  := Size( ClNames_G2_4  );  #  32                                   ## numbers 
+NrClasses_SuzM2 := Size( ClNames_SuzM2 );  #  38                                   ## of conjugacy
+NrClasses_U5_2  := Size( ClNames_U5_2  );  #  47                                   ## classes
+NrClasses_SuzM5 := Size( ClNames_SuzM5 );  #  24                                   ## 
+NrClasses_SuzM6 := Size( ClNames_SuzM6 );  #  27                                   ## 
+NrClasses_SuzM8 := Size( ClNames_SuzM8 );  #  38                                   ##
+NrClasses_SuzM10:= Size( ClNames_SuzM10);  #  21                                   ##
+NrClasses_L3_3_2:= Size( ClNames_L3_3_2 ); #                                       ##
+NrClasses_L2_25 := Size( ClNames_L2_25 );  #  15                                   ##
+NrClasses_A7    := Size( ClNames_A7    );  #   9                                   ##
+
+PosClasses3_G2_4  :=     Filtered( [1..NrClasses_G2_4],                            ## positions
+                   n -> OrdersClassRepresentatives( CharTable_G2_4  )[n] = 3  );;  ## of conjugacy classes  
+PosClasses3_SuzM2 :=     Filtered([1..NrClasses_SuzM2],                            ## of elements
+                   n -> OrdersClassRepresentatives( CharTable_SuzM2 )[n] = 3  );;  ## of order 3 
+PosClasses3_U5_2 :=      Filtered([1..NrClasses_U5_2],                             ##
+                   n -> OrdersClassRepresentatives( CharTable_U5_2  )[n] = 3  );;  ##
+PosClasses3_SuzM5 :=     Filtered([1..NrClasses_SuzM5],                            ##
+                   n -> OrdersClassRepresentatives( CharTable_SuzM5 )[n] = 3  );;  ##
+PosClasses3_SuzM6 :=     Filtered([1..NrClasses_SuzM6],                            ## 
+                   n -> OrdersClassRepresentatives( CharTable_SuzM6 )[n] = 3  );;  ## 
+PosClasses3_SuzM8 :=     Filtered([1..NrClasses_SuzM8],                            ## 
+                   n -> OrdersClassRepresentatives( CharTable_SuzM8 )[n] = 3  );;  ## 
+PosClasses3_SuzM10:=     Filtered([1..NrClasses_SuzM10],                           ## 
+                   n -> OrdersClassRepresentatives( CharTable_SuzM10 )[n] = 3  );; ## 
+PosClasses3_L3_3_2:=     Filtered([1..NrClasses_L3_3_2],                           ## 
+                   n -> OrdersClassRepresentatives( CharTable_L3_3_2 )[n] = 3  );; ## 
+PosClasses3_L2_25:=     Filtered([1..NrClasses_L2_25],                             ## 
+                   n -> OrdersClassRepresentatives( CharTable_L2_25 )[n] = 3  );;  ## 
+PosClasses3_A7    :=     Filtered([1..NrClasses_A7],                               ## 
+                   n -> OrdersClassRepresentatives( CharTable_A7 )[n] = 3  );;     ## 
+
+
+ClNames_G2_4 {PosClasses3_G2_4 };   # [ "3a", "3b" ]                               ## names
+ClNames_SuzM2{PosClasses3_SuzM2};   # [ "3a", "3b", "3c", "3d", "3e" ]             ## of conjugacy classes
+ClNames_U5_2{PosClasses3_U5_2};     # [ "3a", "3b", "3c", "3d", "3e", "3f" ]       ## of elements
+ClNames_SuzM5{PosClasses3_SuzM5};   # [ "3a", "3b", "3c", "3d" ]                   ## of order 3 
+ClNames_SuzM6{PosClasses3_SuzM6};   # [ "3a", "3b" ]                               ## 
+ClNames_SuzM8{PosClasses3_SuzM8};   # [ "3a", "3b", "3c" ]                         ## 
+ClNames_SuzM10{PosClasses3_SuzM10}; # [ "3a", "3b" ]                               ## 
+ClNames_L3_3_2{PosClasses3_L3_3_2}; # [ "3a", "3b" ]                               ##
+ClNames_L2_25{PosClasses3_L2_25};   # [ "3a" ]                                     ## 
+ClNames_A7{PosClasses3_A7};         # [ "3a", "3b" ]                               ## 
+
+PCFs_G2_4  := PossibleClassFusions( CharTable_G2_4,  CharTable_Suz );;             ## possible class fusions
+PCFs_SuzM2 := PossibleClassFusions( CharTable_SuzM2, CharTable_Suz );;             ## from maximal
+PCFs_U5_2  := PossibleClassFusions( CharTable_U5_2, CharTable_Suz );;              ## subgroups
+PCFs_SuzM5 := PossibleClassFusions( CharTable_SuzM5, CharTable_Suz );;             ## into Suz
+PCFs_SuzM6 := PossibleClassFusions( CharTable_SuzM6, CharTable_Suz );;             ## 
+PCFs_SuzM8 := PossibleClassFusions( CharTable_SuzM8, CharTable_Suz );;             ## 
+PCFs_SuzM10:= PossibleClassFusions( CharTable_SuzM10, CharTable_Suz );;            ## 
+PCFs_L3_3_2:= PossibleClassFusions( CharTable_L3_3_2, CharTable_Suz );;            ## 
+PCFs_L2_25 := PossibleClassFusions( CharTable_L2_25, CharTable_Suz );;             ## 
+PCFs_A7    := PossibleClassFusions( CharTable_A7, CharTable_Suz );;                ##
+
+## Printing class fusions of elements of order 3 into Suz :
+
+## Fusion from G2(4) to Suz :
+
+for pos in PosClasses3_G2_4 do
+   Print( " ", ClNames_G2_4[pos], " -> ", Set( PCFs_G2_4, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3c" ]
+
+##  Conclusion:  Only 3a of G2(4) fuses to 3A of Suz
+
+## Fusion from 3_2.U4(3):2'_3 to Suz :
+
+for pos in PosClasses3_SuzM2 do
+   Print( " ", ClNames_SuzM2[pos], " -> ", Set( PCFs_SuzM2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3a" ]
+#  3c -> [ "3b" ]
+#  3d -> [ "3b" ]
+#  3e -> [ "3c" ]
+
+## Conclusion:  Only classes 3a and 3b of 3_2.U4(3):2'_3 fuse to 3A of Suz
+
+
+## Fusion from U5(2) to Suz :
+
+for pos in PosClasses3_U5_2 do
+   Print( " ", ClNames_U5_2[pos], " -> ", Set( PCFs_U5_2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+# 3a -> [ "3a" ]
+# 3b -> [ "3a" ]
+# 3c -> [ "3b" ]
+# 3d -> [ "3b" ]
+# 3e -> [ "3b" ]
+# 3f -> [ "3b" ]
+
+## Conclusion:  Only classes 3a and 3b of U5(2) fuse to 3A of Suz
+
+
+## Fusion from 3^5:M11 to Suz :
+
+for pos in PosClasses3_SuzM5 do
+   Print( " ", ClNames_SuzM5[pos], " -> ", Set( PCFs_SuzM5, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+# 3a -> [ "3a" ]
+# 3b -> [ "3b" ]
+# 3c -> [ "3b" ]
+# 3d -> [ "3c" ]
+
+## Conclusion:  Only class 3a of 3^5:M11 fuses to 3A of Suz
+
+
+## Fusions from J2:2 to Suz :
+
+for pos in PosClasses3_SuzM6 do
+   Print( " ", ClNames_SuzM6[pos], " -> ", Set( PCFs_SuzM6, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3c" ]
+
+## Conclusion: Only class 3a of J2:2 fuses to 3A of Suz 
+
+
+## Fusions from (A4 x L3(4)):2 to Suz :
+
+for pos in PosClasses3_SuzM8 do
+   Print( " ", ClNames_SuzM8[pos], " -> ", Set( PCFs_SuzM8, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3c" ] 
+#  3b -> [ "3a" ] 
+#  3c -> [ "3c" ] 
+
+## Conclusion: Only class 3b of (A4 x L3(4)):2 fuses to 3A of Suz 
+
+## Fusions from M12:2 to Suz :
+
+for pos in PosClasses3_SuzM10 do
+   Print( " ", ClNames_SuzM10[pos], " -> ", Set( PCFs_SuzM10, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3b" ]
+#  3b -> [ "3c" ]
+
+## Conclusion: No elements of order 3 in M12:2 fuse to 3A of Suz 
+
+
+## Fusions from L3(3):2 to Suz :
+
+for pos in PosClasses3_L3_3_2 do
+   Print( " ", ClNames_L3_3_2[pos], " -> ", Set( PCFs_L3_3_2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3b" ]
+#  3b -> [ "3c" ]
+
+## Conclusion: No elements of order 3 in L3(3):2 fuse to 3A of Suz 
+
+
+## Fusions from L2(25) to Suz :
+
+for pos in PosClasses3_L2_25 do
+   Print( " ", ClNames_L2_25[pos], " -> ", Set( PCFs_L2_25, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3c" ]
+
+## Conclusion: No elements of order 3 in L2(25) fuse to 3A of Suz 
+
+
+## Fusions from A7 to Suz :
+
+for pos in PosClasses3_A7 do
+   Print( " ", ClNames_A7[pos], " -> ", Set( PCFs_A7, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
+od;
+
+# 3a -> [ "3c" ]
+# 3b -> [ "3c" ]
+
+## Conclusion: No elements of order 3 of A7 fuse to 3A of Suz 
+
+###
+
+
+##
+##  5. Fusions into class 3a of J2 from its maximal subgroups U3(3) and PGL(2,7)
+## 
+
+
+CharTable_J2     := CharacterTable("J2");;                                         ## character tables of J2
+CharTable_U3_3   := CharacterTable("J2M1");   # CharacterTable( "U3(3)" )          ## and its maximal subgroups 
+CharTable_PGL2_7 := CharacterTable("J2M7");   # CharacterTable( "L3(2).2" )        ## U3(3) and PGL2(7)
+
+ClNames_J2       := ClassNames( CharTable_J2 );;                                   ## names of
+ClNames_U3_3     := ClassNames( CharTable_U3_3 );;                                 ## conjugacy 
+ClNames_PGL2_7   := ClassNames( CharTable_PGL2_7 );;                               ## classes
+
+NrClasses_J2     := Size( ClNames_J2     );  #   21                                ## numbers 
+NrClasses_U3_3   := Size( ClNames_U3_3   );  #   14                                ## of conjugacy
+NrClasses_PGL2_7 := Size( ClNames_PGL2_7 );  #    9                                ## classes
+
+PosClasses3_U3_3   :=     Filtered( [1..NrClasses_U3_3],                           ## positions of       
+                   n -> OrdersClassRepresentatives( CharTable_U3_3 )[n] = 3  );;   ## conjugacy classes 
+PosClasses3_PGL2_7 :=     Filtered([1..NrClasses_PGL2_7],                          ## of elements 
+                   n -> OrdersClassRepresentatives( CharTable_PGL2_7 )[n] = 3  );; ## of order 3
+
+ClNames_U3_3  {PosClasses3_U3_3  };  #  [ "3a", "3b" ]                             ## names of conjugacy classes
+ClNames_PGL2_7{PosClasses3_PGL2_7};  #  [ "3a" ]                                   ## of elements of order 3
+
+PCFs_U3_3   := PossibleClassFusions( CharTable_U3_3  , CharTable_J2 );;            ## possible class fusions
+PCFs_PGL2_7 := PossibleClassFusions( CharTable_PGL2_7, CharTable_J2 );;            ## from maximal subgroups of J2
+
+## Printing fusions of elements of order 3 of U3(3) into J2 : 
+
+for pos in PosClasses3_U3_3 do
+   Print( "  ", ClNames_U3_3[pos], " -> ", Set( PCFs_U3_3, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3b" ]   ##  Conclusion:  Only 3a of U3(3) fuses to 3a of J2
+
+## Printing fusions of elements of order 3 of PGL2(7) into J2 : 
+
+for pos in PosClasses3_PGL2_7 do
+   Print( "  ", ClNames_PGL2_7[pos], " -> ", Set( PCFs_PGL2_7, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3b" ]   ##  Conclusion:  No elements of order 3 of PGL2(7) fuse to 3a of J2
+
+
+###
+##  Proving that no (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
+##  as claimed in the proof of [ Cases (Suz,3A,7)  and  (Suz,3A,13)  <- Reference !!! ] 
+
+G2_4 := AtlasGroup("G2(4)");                    ## G2(4)
+# <permutation group of size 251596800 with 2 generators>
+Gens_G2_4 := GeneratorsOfGroup(G2_4);;
+a := Gens_G2_4[1];; b:= Gens_G2_4[2];;          ## standard generators of G2(4)
+     
+## Constructing a representative of class 3a of G2(4) :
+
+c := (a*b*a*b*b)^5;;     
+Order(c);   # 3     
+Centr_c := Centralizer(G2_4,c);;                ## Centralizer C(c) in G2(4)
+Size(Centr_c);    #  60480                      ## this confirms that c is in class 3a
+
+CnjClass_c := ConjugacyClass( G2_4, c );;       ## conjugacy class of c
+Orbs := OrbitsDomain( Centr_c, CnjClass_c );;   ## orbits of C(c) on the conjugacy class of c
+
+NOrbs := Size(Orbs); #  10                      ## number of orbits
+List(Orbs,Size);                                ## sizes of orbits
+# [ 1008, 945, 945, 1008, 63, 63, 63, 63, 1, 1 ]
+
+2Groups := List( Orbs, o -> 
+        Group( c, Representative(o) ) );;      ## representatives of 2-generated subgroups < c, c^g >, g ∊ G2(4)
+
+List(2Groups,Size);  # [ 24, 60, 60, 24, 12, 12, 12, 12, 3, 3 ]
+
+### Conclusion: No (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
+
+
+###
+##  Proving that no (3a,3a)-generated subgroup of U4(3) has order divisible by either 7.
+##  as claimed in the proof of [ Case (Suz,3A,7)  <- Reference !!! ] 
+
+U4_3 := AtlasGroup("U4(3)");                       ## U4(3)
+# <matrix group of size 3265920 with 2 generators>
+Gens_U4_3 := GeneratorsOfGroup(U4_3);;
+a := Gens_U4_3[1];; b:= Gens_U4_3[2];;             ## standard generators
+
+## Constructing a representative of class 3a of U4(3)
+
+c:=b^2;;
+Order(c);  # 3
+Centr_c := Centralizer(U4_3,c);
+Size(Centr_c);  # 5832   ##  => c is in class 3a
+
+## Order of (3a,3a)-generated subgroups:
+
+Conj := ConjugacyClass( U4_3, c );;
+Orbs := OrbitsDomain(  Centr_c, Conj );;
+NOrbs := Size(Orbs); #  6                           ## number of orbits
+
+2GroupsSizes := List( Orbs, o -> Size( Group( c, Representative(o) ) ) );
+# [ 24, 24, 9, 9, 3, 3 ]                            ##  Orders of 2-generated subgroups < c, c^g >, g ∊ U4_3
+
+### Conclusion:  There are no (3a,3a)-generated subgroups in U4(3) of order divisible by 7
+
+
+###
+##  Proving that no (3a,3a)-generated subgroup of U3(3) has order divisible by either 7.
+##  as claimed in the proof of [ Case (Suz,3A,7)  <- Reference !!! ] 
+
+# Standard generators of U3(3) are a and b where a has order 2, b has order 6 and ab has order 7.
+
+U3_3 := AtlasGroup("U3(3)");;
+Gens_U3_3 := GeneratorsOfGroup(U3_3);;
+a := Gens_U3_3[1];; b:= Gens_U3_3[2];;                ## standard generators
+
+## Constructing a representative of class 3a of U3(3)
+
+c := b^2;;
+Order(c);                  # 3
+Size(Centralizer(U3_3,c)); # 108                      ## => c is in class 3a
+
+Conj := ConjugacyClass(U3_3,c);;
+Set(Combinations(Elements(Conj),2),k-> Size(Group(k))); # Sizes of (3a,3a)-generated subgroups of U3(3)
+# [ 3, 24 ]
+
+### Conclusion: There are no (3a,3a)-generated subgroups in U3(3) of order divisible by 7
+
+
+###
+##  Analysing class sizes of elements of order 3 
+##  in the maximal subgroup M = 3_2.U4(3):2'_3 of Suz
+##  and in its sections 3_2.U4(3)  and  U4(3) as stated in 
+##  Table \{cls3} [reference !!!] and required in the proof of Case (Suz,3A,7)  :
+
+CharTable_SuzM2    := CharacterTable("SuzM2");  # CharacterTable( "3_2.U4(3).2_3'" )    ## character 
+CharTable_3_2_U4_3 := CharacterTable("3_2.U4(3)");;                                     ## tables 
+CharTable_U4_3     := CharacterTable("U4(3)");;                                         ##
+
+ClNames_SuzM2      := ClassNames( CharTable_SuzM2 );;               ## names 
+ClNames_3_2_U4_3   := ClassNames( CharTable_3_2_U4_3 );;            ## of conjugacy 
+ClNames_U4_3       := ClassNames( CharTable_U4_3 );;                ## classes
+
+NrClasses_SuzM2    := Size( ClNames_SuzM2 );     # 38               ## numbers 
+NrClasses_3_2_U4_3 := Size( ClNames_3_2_U4_3 );  # 46               ## of conjugacy 
+NrClasses_U4_3     := Size( ClNames_U4_3 );      # 20               ## classes
+
+PosClasses3_SuzM2 := Filtered( [1..NrClasses_SuzM2],                ## positions 
+   n -> OrdersClassRepresentatives(CharTable_SuzM2)[n] = 3  );;     ## of classes  
+PosClasses3_3_2_U4_3 := Filtered( [1..NrClasses_3_2_U4_3],          ## of elements
+   n -> OrdersClassRepresentatives(CharTable_3_2_U4_3)[n] = 3  );;  ## of order 3 
+PosClasses3_U4_3 := Filtered( [1..NrClasses_U4_3],                  ##
+   n -> OrdersClassRepresentatives(CharTable_U4_3)[n] = 3  );;      ##
+
+ SizesCClasses3_SuzM2 := List( PosClasses3_SuzM2, pos 
+            ->  SizesConjugacyClasses(CharTable_SuzM2)[pos] );;     ## list of sizes 
+ SizesCClasses3_3_2_U4_3 := List( PosClasses3_3_2_U4_3, pos         ## of conjugacy classes
+            ->  SizesConjugacyClasses(CharTable_3_2_U4_3)[pos] );;  ## of elements
+ SizesCClasses3_U4_3 := List( PosClasses3_U4_3, pos                 ## of order 3 
+            ->  SizesConjugacyClasses(CharTable_U4_3)[pos] );;      ## 
+
+
+## Printing class sizes for M = 3_2.U4(3):2'_3 :
+
+for n in [ 1..Size(PosClasses3_SuzM2) ] do 
+    Print("Class : ", ClNames_SuzM2[PosClasses3_SuzM2[n]],
+          "   Size : ", PrintString(SizesCClasses3_SuzM2[n],6), "\n" );
+od;
+
+# Class : 3a   Size :      2
+# Class : 3b   Size :    560
+# Class : 3c   Size :   1120
+# Class : 3d   Size :  20160
+# Class : 3e   Size : 120960
+
+## Conclusion: Class 3a lies in the 3-radical 3_2 of M. Hence, if x,y ∊ 3a, they cannot generate a subgroup of order divisible by 7
+
+
+## Printing class sizes for 3_2.U4(3) :
+
+for n in [ 1..Size(PosClasses3_3_2_U4_3) ] do 
+    Print("Class : ", ClNames_3_2_U4_3[PosClasses3_3_2_U4_3[n]],
+          "   Size : ", PrintString(SizesCClasses3_3_2_U4_3[n],6), "\n" );
+od;
+
+# Class : 3a   Size :      1
+# Class : 3b   Size :      1
+# Class : 3c   Size :    560
+# Class : 3d   Size :    560
+# Class : 3e   Size :    560
+# Class : 3f   Size :  10080
+# Class : 3g   Size :  10080
+# Class : 3h   Size : 120960
+
+## Conclusion : From the class sizes, we see that class 3b of M = 3_2.U4(3):2'_3 is one 
+##              of the classes 3c, 3d, 3e of 3_2.U4(3) and that the other two are merged to 3c of M
+##              by the outer automorphism 2'_3. ( In fact, from class fusion, we may determine
+##              precisely that 3c of 3_2.U4(3) is 3b of M and 3d and 3e of 3_2.U4(3) merge to 3c of M : 
+##
+##              PCFs := PossibleClassFusions( CharTable_3_2_U4_3, CharTable_SuzM2 );;
+##              Set( PCFs, cf -> ClNames_SuzM2[cf[CharTable_3_2_U4_3.3c ]]); # [ "3b" ] ## fusion of 3c into M
+##              Set( PCFs, cf -> ClNames_SuzM2[cf[CharTable_3_2_U4_3.3d ]]); # [ "3c" ] ## fusion of 3d into M
+##              Set( PCFs, cf -> ClNames_SuzM2[cf[CharTable_3_2_U4_3.3e ]]); # [ "3c" ] ## fusion of 3e into M
+## 
+##              However, we do not need this precise information in the proof. )
+
+
+## Printing class sizes for U4(3) :
+
+for n in [ 1..Size(PosClasses3_U4_3) ] do 
+    Print("Class : ", ClNames_U4_3[PosClasses3_U4_3[n]],
+          "   Size : ", PrintString(SizesCClasses3_U4_3[n],6), "\n" );
+od;
+
+# Class : 3a   Size :    560
+# Class : 3b   Size :   3360
+# Class : 3c   Size :   3360
+# Class : 3d   Size :  40320
+
+## Conclusion : Classes 3c, 3d, 3e  of  3_2.U4(3) map to class 3a of U4(3)
+
+
+###
+##  Analysing class sizes of elements of order 3 
+##  in the maximal subgroup M = ( A4 × L3(4) ) : 2 of Suz
+##  as required in the proof of Case (Suz,3A,7)  :
+
+CharTable_SuzM8 := CharacterTable("SuzM8");  # CharacterTable( "(a4xpsl(3,4)):2" ) ## character table of (A4 x L3(4)):2 
+ClNames_SuzM8   := ClassNames( CharTable_SuzM8 );;                                 ## names of conjugacy classes
+NrClasses_SuzM8 := Size( ClNames_SuzM8 );  #  38                                   ## number of conjugacy classes 
+
+PosClasses3_SuzM8 :=     Filtered([1..NrClasses_SuzM8],                            ## positions of classes
+                   n -> OrdersClassRepresentatives( CharTable_SuzM8 )[n] = 3  );;  ## of elements of order 3 
+
+SizesCClasses3_SuzM8 := List( PosClasses3_SuzM8, pos                               ## sizes of classes
+            ->  SizesConjugacyClasses(CharTable_SuzM8)[pos] );;                    ## of elements of order 3 
+
+## Printing class sizes for (A4 x L3(4)):2  :
+
+for n in [ 1..Size(PosClasses3_SuzM8) ] do 
+    Print("Class : ", ClNames_SuzM8[PosClasses3_SuzM8[n]],
+          "   Size : ", PrintString(SizesCClasses3_SuzM8[n],5), "\n" );
+od;
+
+Class : 3a   Size :  2240     ##  = size of (a unique) class C2 of elements of order 3 in L3(4)                        <->  elements (1,y), y in C2 
+Class : 3b   Size :     8     ##  = size of two classes of elements of order 3 in A4 merged to C1 by outer involution  <->  elements (x,1), x in C1
+Class : 3c   Size : 17920     ##  = product of the above                                                               <->  elements (x,y), x in C1, y in C2 
+  
+## Conclusion: The whole class 3b  of  ( A4 × L3(4) ) : 2  = SuzM8 generates 
+##             the normal subgroup A4 whose order is not divisible by 7
+
+
+###
+##  Finding a representative of class 3a of U5(2).2 and checking whether 
+##  every (3a,3a,3a)-generated subgroup of U5(2).2 has order not divisible by 11
+##  as claimed in the proof of Case (Suz,3A,11) :
+
+## Standard generators of U5(2).2 are a and b, where a has order 2 (so is in class 2C), 
+## b has order 4 (so is in class 4D), ab has order 11 and ababb has order 4.
+
+U5_2_2 := AtlasGroup("U5(2).2");                           ## U5(2).2
+# <permutation group of size 27371520 with 2 generators>
+Gens_U5_2_2 := GeneratorsOfGroup(U5_2_2);;
+a := Gens_U5_2_2[1];; b:= Gens_U5_2_2[2];;                 ##  standard generators
+
+c := (a*b*(a*b^2)^2)^4;;
+Order(c);                # 3
+Centr_c := Centralizer(U5_2_2,c);;            ## centraliser C of c
+Size(Centr_c);          # 77760               ## => c is in class 3a of  U5(2).2 
+Conj := ConjugacyClass( U5_2_2, c );;         ## conjugacy class of c
+
+
+Orbs := OrbitsDomain(  Centr_c, Tuples(Conj,2), OnTuples );;   ##  Orbits of C on pairs (g,h) with g,h in 
+
+3GroupsSizes := Set( Orbs, o -> 
+     Size( Group( Concatenation([c], Representative(o) ) ) )); ##  Orders of 3-generated subgroups < c, c^g, c^h >, g,h in U5_2_2
+
+# [ 3, 9, 24, 27, 72, 648, 768 ]       ## distinct orders of these subgroups are {2,3}-numbers
+
+## Conclusion : All orders of (3a,3a,3a)-generated subgroup of U5(2).2
+##              are {2,3}-numbers, hence, not divisible by 11
+
+
+
+###
+##  Checking that class 3a of the maximal subgroup 3^5:M11 of Suz lies in its 3-radical
+##  as claimed in the proof of Case (Suz,3A, 11)  
+
+
+Display(CharTable_SuzM5);
+
+#   3^5:M11
+#   
+#         2   4    3   2   4   2   2  3  2  1  .  1  1  3   2  .   .   .  1   1   1  3  3   .   .
+#         3   7    7   7   4   4   4  3  3  4  4  3  3  1   1  1   1   1  2   2   2  .  .   .   .
+#         5   1    1   .   .   .   .  .  .  .  .  .  .  .   .  1   1   1  .   .   .  .  .   .   .
+#        11   1    .   .   .   .   .  .  .  .  .  .  .  .   .  .   .   .  .   .   .  .  .   1   1
+#   
+#            1a   3a  3b  2a  6a  6b 6c 6d 3c 3d 9a 9b 4a 12a 5a 15a 15b 6e 18a 18b 8a 8b 11a 11b
+#        2P  1a   3a  3b  1a  3b  3b 3a 3b 3c 3d 9b 9a 2a  6c 5a 15a 15b 3c  9b  9a 4a 4a 11b 11a
+#        3P  1a   1a  1a  2a  2a  2a 2a 2a 1a 1a 3b 3b 4a  4a 5a  5a  5a 2a  6b  6a 8a 8b 11a 11b
+#        5P  1a   3a  3b  2a  6b  6a 6c 6d 3c 3d 9b 9a 4a 12a 1a  3a  3a 6e 18b 18a 8b 8a 11a 11b
+#        7P  1a   3a  3b  2a  6a  6b 6c 6d 3c 3d 9a 9b 4a 12a 5a 15b 15a 6e 18a 18b 8b 8a 11b 11a
+#       11P  1a   3a  3b  2a  6b  6a 6c 6d 3c 3d 9b 9a 4a 12a 5a 15b 15a 6e 18b 18a 8a 8b  1a  1a
+#       13P  1a   3a  3b  2a  6a  6b 6c 6d 3c 3d 9a 9b 4a 12a 5a 15b 15a 6e 18a 18b 8b 8a 11b 11a
+#   
+#   X.1       1    1   1   1   1   1  1  1  1  1  1  1  1   1  1   1   1  1   1   1  1  1   1   1
+#   X.2      10   10  10   2   2   2  2  2  1  1  1  1  2   2  .   .   . -1  -1  -1  .  .  -1  -1
+#   X.3      10   10  10  -2  -2  -2 -2 -2  1  1  1  1  .   .  .   .   .  1   1   1  G -G  -1  -1
+#   X.4      10   10  10  -2  -2  -2 -2 -2  1  1  1  1  .   .  .   .   .  1   1   1 -G  G  -1  -1
+#   X.5      11   11  11   3   3   3  3  3  2  2  2  2 -1  -1  1   1   1  .   .   . -1 -1   .   .
+#   X.6      16   16  16   .   .   .  .  . -2 -2 -2 -2  .   .  1   1   1  .   .   .  .  .   H  /H
+#   X.7      16   16  16   .   .   .  .  . -2 -2 -2 -2  .   .  1   1   1  .   .   .  .  .  /H   H
+#   X.8      44   44  44   4   4   4  4  4 -1 -1 -1 -1  .   . -1  -1  -1  1   1   1  .  .   .   .
+#   X.9      45   45  45  -3  -3  -3 -3 -3  .  .  .  .  1   1  .   .   .  .   .   . -1 -1   1   1
+#   X.10     55   55  55  -1  -1  -1 -1 -1  1  1  1  1 -1  -1  .   .   . -1  -1  -1  1  1   .   .
+#   X.11    110  -25   2  14  -4  -4 -1  2  2  2 -1 -1  2  -1  .   .   .  2  -1  -1  .  .   .   .
+#   X.12    110  -25   2  -2  -2  -2  7 -2  2  2 -1 -1  2  -1  .   .   . -2   1   1  .  .   .   .
+#   X.13    110  -25   2   6   A  /A  3  .  2  2 -1 -1 -2   1  .   .   .  .   E  -E  .  .   .   .
+#   X.14    110  -25   2   6  /A   A  3  .  2  2 -1 -1 -2   1  .   .   .  .  -E   E  .  .   .   .
+#   X.15    132   24  -3  12   3   3  . -3  6 -3  .  .  .   .  2  -1  -1  .   .   .  .  .   .   .
+#   X.16    220  -50   4 -12   6   6 -6  .  4  4 -2 -2  .   .  .   .   .  .   .   .  .  .   .   .
+#   X.17    396   72  -9 -12  -3  -3  .  3  .  .  .  .  .   .  1   D  /D  .   .   .  .  .   .   .
+#   X.18    396   72  -9 -12  -3  -3  .  3  .  .  .  .  .   .  1  /D   D  .   .   .  .  .   .   .
+#   X.19    440 -100   8   8   B  /B -4  2 -1 -1  C /C  .   .  .   .   . -1   F  /F  .  .   .   .
+#   X.20    440 -100   8  -8  -B -/B  4 -2 -1 -1  C /C  .   .  .   .   .  1  -F -/F  .  .   .   .
+#   X.21    440 -100   8  -8 -/B  -B  4 -2 -1 -1 /C  C  .   .  .   .   .  1 -/F  -F  .  .   .   .
+#   X.22    440 -100   8   8  /B   B -4  2 -1 -1 /C  C  .   .  .   .   . -1  /F   F  .  .   .   .
+#   X.23    528   96 -12   .   .   .  .  .  6 -3  .  .  .   . -2   1   1  .   .   .  .  .   .   .
+#   X.24    660  120 -15  12   3   3  . -3 -6  3  .  .  .   .  .   .   .  .   .   .  .  .   .   .
+#   
+#   A = 6*E(3)
+#     = -3+3*Sqrt(-3) = 6b3
+#   B = -2*E(3)+4*E(3)^2
+#     = -1-3*Sqrt(-3) = -1-3i3
+#   C = -2*E(3)+E(3)^2
+#     = (1-3*Sqrt(-3))/2 = -1-3b3
+#   D = -E(15)^7-E(15)^11-E(15)^13-E(15)^14
+#     = (-1+Sqrt(-15))/2 = b15
+#   E = E(3)-E(3)^2
+#     = Sqrt(-3) = i3
+#   F = -E(3)^2
+#     = (1+Sqrt(-3))/2 = 1+b3
+#   G = E(8)+E(8)^3
+#     = Sqrt(-2) = i2
+#   H = E(11)+E(11)^3+E(11)^4+E(11)^5+E(11)^9
+#     = (-1+Sqrt(-11))/2 = b11
+
+## It follows from the character values that the first 10 characters 
+## are unfaithful with classes 3a and 3b in their kernels
+###
+
+###  Case  (S,x,r) = (J₂,3a,7)
+##
+## We know that  2 ⩽ β_{J₂,7}(3A) ⩽ 3
+## We check the orders of all (3A,3A)-generated subgroups of J₂
+## First, we find a representative of class 3A of J₂.
+## Standard generators of J₂ are a and b where a is in class 2B, b is in class 3B, ab has order 7 and ababb has order 12.
+
+J2 := AtlasGroup("J2");  # <permutation group of size 604800 with 2 generators>
+Gens_J2 := GeneratorsOfGroup(J2);;
+a := Gens_J2[1];; b:= Gens_J2[2];;         # standard generators
+List( [ a, b, a*b, a*b*a*b*b ], Order );   #  [ 2, 3, 7, 12 ]
+
+c := (a*b*a*b*b)^4;;
+
+Order(c);               #  3
+Centr_c := Centralizer(J2,c);;
+Size(Centr_c);          #  1080    ##  => c is in 3A. 
+Conj := ConjugacyClass(J2,c);;
+
+Orbs := OrbitsDomain( Centr_c, Conj );;
+NOrbs := Size(Orbs);    #  10      ##  number of orbits
+
+2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) ); ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ J2
+# [ 3, 12, 24, 60 ]
+
+## Conclusion : No (3A,3A)-generated subgroup of J2 has order divisible by 7
+##              Therefore,   β_{J₂,7}(3A) = 3
+###
+
+###  Case  (S,x,r) = (HS,4a,11)
+##
+## We know that  2 ⩽ β_{HS,11}(4A) ⩽ 3
+## We check the orders of all (4A,4A)-generated subgroups of HN
+## First, we find a representative of class 4A of HN
+## Standard generators of HS are a and b where a is in class 2A, b is in class 5A and ab has order 11
+
+HS := AtlasGroup("HS");   #  <permutation group of size 44352000 with 2 generators>
+Gens_HS := GeneratorsOfGroup(HS);;
+a := Gens_HS[1];; b:= Gens_HS[2];;       # standard generators
+List( [ a, b, a*b ], Order );            #  [ 2, 5, 11 ]
+
+c := (a*b*a*b^3*a*b^3)^3;;
+Order(c);                # 4
+Centr_c := Centralizer(HS,c);;
+Size(Centr_c);           # 3840        ##  =>  c is in class 4A 
+Conj := ConjugacyClass(HS,c);;
+Size(Conj);              # 11550
+
+Orbs := OrbitsDomain( Centr_c, Conj );;
+NOrbs := Size(Orbs); #  17   ## number of orbits
+
+2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) ); ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ HS
+# [ 4, 16, 20, 24, 120, 320, 500, 720, 5040 ]
+
+## Conclusion : No (4A,4A)-generated subgroup of HS has order divisible by 11
+##              Therefore,   β_{HS,11}(4A) = 3
+###
+
+
+###  Case  (S,x) = (McL,3A) r = 7,11
+##
+## We know that  2 ⩽ β_{McL,r}(3A) ⩽ 3
+## We check the orders of all (3A,3A)-generated subgroups of McL
+## First, we find a representative of 3A of McL
+## Standard generators of the McLaughlin group McL are a and b where a is in class 2A, b is in class 5A, 
+## ab has order 11 and ababababbababbabb has order 7
+
+
+McL := AtlasGroup("McL");  # <permutation group of size 898128000 with 2 generators>
+Gens_McL := GeneratorsOfGroup(McL);;
+a := Gens_McL[1];; b:= Gens_McL[2];;         # standard generators
+List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );   #  [ 2, 5, 11, 7 ]
+
+c := (a*b^2)^4;;
+Order(c);                       #  3
+Centr_c := Centralizer(McL,c);
+Size(Centr_c);                  #  29160   ## => c is in class 3A   
+Conj := ConjugacyClass(McL,c);;
+Size(Conj);                     #  30800
+
+Orbs := OrbitsDomain( Centr_c, Conj );;
+NOrbs := Size(Orbs);            #  10    ## number of orbits
+
+2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) );  ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ McL
+#  [ 3, 9, 24, 120, 375 ]       ## not divisible by 7 or 11
+
+## Conclusion : No (3A,3A)-generated subgroup of McL has order divisible by either 7 or 11
+##              Therefore,   β_{McL,r}(3A) = 3,  r = 7, 11
+###
+
+

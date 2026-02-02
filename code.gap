@@ -5,7 +5,7 @@
 ## 
 ##  by Danila O. Revin and Andrei V. Zavarnitsine
 ##
-##  Date: May 11, 2025
+##  Date: February 2, 2026
 
 ###
 ##  Each section of the following code can be copy-pasted into a working GAP session.

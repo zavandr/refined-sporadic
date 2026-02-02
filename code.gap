@@ -784,6 +784,8 @@ Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-g
 ###
 
 ###
+## Section 16.
+##
 ##  Analysing class sizes of elements of order 3 
 ##  in the maximal subgroup M = 3_2.U4(3):2'_3 of Suz
 ##  and in its sections 3_2.U4(3)  and  U4(3) as stated in 
@@ -874,9 +876,11 @@ od;
 # Class : 3d   Size :  40320
 
 ## Conclusion : Classes 3c, 3d, 3e  of  3_2.U4(3) map to class 3a of U4(3)
-
+###
 
 ###
+## Section 17.
+##
 ##  Analysing class sizes of elements of order 3 
 ##  in the maximal subgroup M = ( A4 × L3(4) ) : 2 of Suz
 ##  as required in the proof of Case (Suz,3A,7)  :
@@ -904,9 +908,11 @@ Class : 3c   Size : 17920     ##  = product of the above                        
   
 ## Conclusion: The whole class 3b  of  ( A4 × L3(4) ) : 2  = SuzM8 generates 
 ##             the normal subgroup A4 whose order is not divisible by 7
-
+###
 
 ###
+## Section 18.
+##
 ##  Finding a representative of class 3a of U5(2).2 and checking whether 
 ##  every (3a,3a,3a)-generated subgroup of U5(2).2 has order not divisible by 11
 ##  as claimed in the proof of Case (Suz,3A,11) :
@@ -918,6 +924,8 @@ U5_2_2 := AtlasGroup("U5(2).2");                           ## U5(2).2
 # <permutation group of size 27371520 with 2 generators>
 Gens_U5_2_2 := GeneratorsOfGroup(U5_2_2);;
 a := Gens_U5_2_2[1];; b:= Gens_U5_2_2[2];;                 ##  standard generators
+List( [ a, b, a*b, (a*b)^2*b ], Order );  #  [ 2, 4, 11, 4 ]
+
 
 c := (a*b*(a*b^2)^2)^4;;
 Order(c);                # 3
@@ -933,12 +941,14 @@ Orbs := OrbitsDomain(  Centr_c, Tuples(Conj,2), OnTuples );;   ##  Orbits of C o
 
 # [ 3, 9, 24, 27, 72, 648, 768 ]       ## distinct orders of these subgroups are {2,3}-numbers
 
-## Conclusion : All orders of (3a,3a,3a)-generated subgroup of U5(2).2
+## Conclusion : All orders of (3a,3a,3a)-generated subgroups of U5(2).2
 ##              are {2,3}-numbers, hence, not divisible by 11
-
+###
 
 
 ###
+## Section 19.
+##
 ##  Checking that class 3a of the maximal subgroup 3^5:M11 of Suz lies in its 3-radical
 ##  as claimed in the proof of Case (Suz,3A, 11)  
 
@@ -1002,31 +1012,34 @@ Display(CharTable_SuzM5);
 #   H = E(11)+E(11)^3+E(11)^4+E(11)^5+E(11)^9
 #     = (-1+Sqrt(-11))/2 = b11
 
-## It follows from the character values that the first 10 characters 
-## are unfaithful with classes 3a and 3b in their kernels
+## It follows from the character values on classes 3a and 3b that
+## the first 10 characters are unfaithful with classes 3a and 3b 
+## in their kernels. Hence, these classes lie in the 3-radical of 3^5:M11
 ###
 
-###  Case  (S,x,r) = (J₂,3a,7)
+###  
+## Section 20.
 ##
-## We know that  2 ⩽ β_{J₂,7}(3A) ⩽ 3
-## We check the orders of all (3A,3A)-generated subgroups of J₂
+## Case  (S,x,r) = (J₂,3A,7).
+##
+## We check that no (3A,3A)-generated subgroup of J2 has order divisible by 7.
 ## First, we find a representative of class 3A of J₂.
 ## Standard generators of J₂ are a and b where a is in class 2B, b is in class 3B, ab has order 7 and ababb has order 12.
 
 J2 := AtlasGroup("J2");  # <permutation group of size 604800 with 2 generators>
 Gens_J2 := GeneratorsOfGroup(J2);;
-a := Gens_J2[1];; b:= Gens_J2[2];;         # standard generators
+a := Gens_J2[1];; b:= Gens_J2[2];;         ## standard generators
 List( [ a, b, a*b, a*b*a*b*b ], Order );   #  [ 2, 3, 7, 12 ]
 
 c := (a*b*a*b*b)^4;;
 
 Order(c);               #  3
-Centr_c := Centralizer(J2,c);;
-Size(Centr_c);          #  1080    ##  => c is in 3A. 
-Conj := ConjugacyClass(J2,c);;
-
-Orbs := OrbitsDomain( Centr_c, Conj );;
-NOrbs := Size(Orbs);    #  10      ##  number of orbits
+Centr_c := Centralizer(J2,c);;               ## centraliser C of c in J2 
+Size(Centr_c);          #  1080              ##  =>  c is in 3A. 
+Conj := ConjugacyClass(J2,c);;               ## conjugacy class of c in J2
+  
+Orbs := OrbitsDomain( Centr_c, Conj );;      ## orbits of C on the conjugacy class
+NOrbs := Size(Orbs);    #  10                ## number of orbits
 
 2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) ); ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ J2
 # [ 3, 12, 24, 60 ]
@@ -1035,27 +1048,29 @@ NOrbs := Size(Orbs);    #  10      ##  number of orbits
 ##              Therefore,   β_{J₂,7}(3A) = 3
 ###
 
-###  Case  (S,x,r) = (HS,4a,11)
+###  
+## Section 21.
 ##
-## We know that  2 ⩽ β_{HS,11}(4A) ⩽ 3
-## We check the orders of all (4A,4A)-generated subgroups of HN
-## First, we find a representative of class 4A of HN
+## Case  (S,x,r) = (HS,4A,11)
+##
+## We check that the orders of all (4A,4A)-generated subgroups of HN have order not divisible by 11
+## First, we find a representative of class 4A of HS
 ## Standard generators of HS are a and b where a is in class 2A, b is in class 5A and ab has order 11
 
 HS := AtlasGroup("HS");   #  <permutation group of size 44352000 with 2 generators>
 Gens_HS := GeneratorsOfGroup(HS);;
-a := Gens_HS[1];; b:= Gens_HS[2];;       # standard generators
-List( [ a, b, a*b ], Order );            #  [ 2, 5, 11 ]
+a := Gens_HS[1];; b:= Gens_HS[2];;       ## standard generators
+List( [ a, b, a*b ], Order );        #  [ 2, 5, 11 ]
 
 c := (a*b*a*b^3*a*b^3)^3;;
 Order(c);                # 4
-Centr_c := Centralizer(HS,c);;
-Size(Centr_c);           # 3840        ##  =>  c is in class 4A 
-Conj := ConjugacyClass(HS,c);;
+Centr_c := Centralizer(HS,c);;            ## centraliser C of c in HS
+Size(Centr_c);           # 3840           ##  =>  c is in class 4A 
+Conj := ConjugacyClass(HS,c);;            ## conjugacy class of c in HS
 Size(Conj);              # 11550
 
-Orbs := OrbitsDomain( Centr_c, Conj );;
-NOrbs := Size(Orbs); #  17   ## number of orbits
+Orbs := OrbitsDomain( Centr_c, Conj );;   ## orbits of C on the conjugacy class
+NOrbs := Size(Orbs); #  17                ## number of orbits
 
 2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) ); ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ HS
 # [ 4, 16, 20, 24, 120, 320, 500, 720, 5040 ]
@@ -1064,6 +1079,7 @@ NOrbs := Size(Orbs); #  17   ## number of orbits
 ##              Therefore,   β_{HS,11}(4A) = 3
 ###
 
+***
 
 ###  Case  (S,x) = (McL,3A) r = 7,11
 ##

@@ -1,5 +1,5 @@
 ###
-##  This code for GAP ( version 4.14.0 of 2024-12-05 ) accompanies the paper
+##  This code for GAP ( version 4.15.1 of 2025-10-18 ) accompanies the paper
 ##  
 ##  "Refined conjugate generation in sporadic groups"
 ## 

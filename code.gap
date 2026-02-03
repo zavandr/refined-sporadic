@@ -187,11 +187,14 @@ ForAll( ListMCentr, l -> l[1] < l[2] );   # true
 ##
 ## We prove that α( U6(2), 3b ) ⩽ 3  as claimed in the proof of [ Lemma \ref{more_alpha}, Case S = U6(2) ]
 ## by finding explicilty 3 generators of U6(3) in class 3b
+## Standard generators of U6(2) are a and b where a is in class 2A, b has order 7, ab has order 11 and abb has order 18.
 
 U6_2 := AtlasGroup("U6(2)");
 # <permutation group of size 9196830720 with 2 generators>
 Gens_U6_2 := GeneratorsOfGroup(U6_2);;    
-a := Gens_U6_2[1];; b:= Gens_U6_2[2];;            ## standard generators of U6(2) 
+a := Gens_U6_2[1];; b:= Gens_U6_2[2];;            ## standard generators of U6(2)
+List( [ a, b, a*b, a*b^2 ], Order ); 
+# [ 2, 7, 11, 18 ]                                ## this agrees with the definition of standard generators    
 
 x := (a*b^2) ^ 6;;
 Order( x );                     # 3
@@ -227,7 +230,7 @@ ClNames_U6_2{PosIneqHolds}; # [ "7a", "9c" ]                         ## found cl
 ###
 ## Section 6.
 ##
-##  Checking that in SU6(2), we have  
+##  Checking that, in SU6(2), we have  
 ##
 ##  m( 3f, 3f, 7a )  > 0 
 ##  m( 3f, 3f, 21a ) = 0 
@@ -404,7 +407,7 @@ od;
 ### 
 ## Section 10.
 ##
-##  Checking that there are three elements in 3A whose product has order 7 and 13
+##  Checking that there are three elements in 3A of Suz whose product has order 7 and 13
 ##  as claimed in the proofs of cases  (Suz,3A,r), r = 7, 13
 
 CharTable_Suz  := CharacterTable("Suz");                           ## character tables of Suz
@@ -415,7 +418,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
                                           CharTable_Suz.7a ] );    ##  n( 3A, 3A, 3A, 7A )
 # 16738231910400     
 
-## Conclusion:  The product of three elements in 3A has order 7 
+## Conclusion:  The product of three elements in 3A of Suz has order 7 
 ## => β_{Suz,7}(3A) ⩽ 3
 
 ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
@@ -425,7 +428,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
 
 # 5828491468800
 
-## Conclusion: The product of three elements in 3A has order 13
+## Conclusion: The product of three elements in 3A of Suz has order 13
 ## => β_{Suz,13}(3A) ⩽ 3
 
 ###  
@@ -698,11 +701,16 @@ od;
 ##  Proving that no (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
 ##  as claimed in the proof of [ Cases (Suz,3A,7)  and  (Suz,3A,13)  of Theorem \ref{main}  ] 
 
+## Standard generators of G2(4) are a and b, where a is in class 2A, b is in class 5C/D, 
+## ab has order 13, abb has order 13, and ababb has order 15.
+
 G2_4 := AtlasGroup("G2(4)");                    ## G2(4)
 # <permutation group of size 251596800 with 2 generators>
 Gens_G2_4 := GeneratorsOfGroup(G2_4);;
 a := Gens_G2_4[1];; b:= Gens_G2_4[2];;          ## standard generators of G2(4)
-     
+List( [ a, b, a*b, a*b^2, (a*b)^2*b ], Order );
+# [ 2, 5, 13, 13, 15 ]                          ## this agrees with the definition of standard generators
+
 ## Constructing a representative of class 3a of G2(4) :
 
 c := (a*b*a*b*b)^5;;     
@@ -737,7 +745,8 @@ U4_3 := AtlasGroup("U4(3)");                       ## U4(3)
 # <matrix group of size 3265920 with 2 generators>
 Gens_U4_3 := GeneratorsOfGroup(U4_3);;
 a := Gens_U4_3[1];; b:= Gens_U4_3[2];;             ## standard generators
-List([ a, b, a*b, (a*b)^3*(b*a)^2*b^2 ], Order);  #  [ 2, 6, 7, 5 ] 
+List([ a, b, a*b, (a*b)^3*(b*a)^2*b^2 ], Order);  
+#  [ 2, 6, 7, 5 ]                                  ## this agrees with the definition of standard generators
 
 ## Constructing a representative of class 3a of U4(3)
 
@@ -768,7 +777,9 @@ NOrbs := Size(Orbs); #  6                           ## number of orbits
 
 U3_3 := AtlasGroup("U3(3)");;
 Gens_U3_3 := GeneratorsOfGroup(U3_3);;
-a := Gens_U3_3[1];; b:= Gens_U3_3[2];;                ## standard generators
+a := Gens_U3_3[1];; b:= Gens_U3_3[2];;             ## standard generators
+List( [ a, b, a*b ], Order ); 
+# [ 2, 6, 7 ]                                      ## this agrees with the definition of standard generators
 
 ## Constructing a representative of class 3a of U3(3)
 
@@ -923,8 +934,9 @@ Class : 3c   Size : 17920     ##  = product of the above                        
 U5_2_2 := AtlasGroup("U5(2).2");                           ## U5(2).2
 # <permutation group of size 27371520 with 2 generators>
 Gens_U5_2_2 := GeneratorsOfGroup(U5_2_2);;
-a := Gens_U5_2_2[1];; b:= Gens_U5_2_2[2];;                 ##  standard generators
-List( [ a, b, a*b, (a*b)^2*b ], Order );  #  [ 2, 4, 11, 4 ]
+a := Gens_U5_2_2[1];; b:= Gens_U5_2_2[2];;                 ## standard generators
+List( [ a, b, a*b, (a*b)^2*b ], Order );  
+#  [ 2, 4, 11, 4 ]                                         ## this agrees with the definition of standard generators
 
 
 c := (a*b*(a*b^2)^2)^4;;
@@ -1014,7 +1026,8 @@ Display(CharTable_SuzM5);
 
 ## It follows from the character values on classes 3a and 3b that
 ## the first 10 characters are unfaithful with classes 3a and 3b 
-## in their kernels. Hence, these classes lie in the 3-radical of 3^5:M11
+## in their kernels (the lifts of irreducible character of M11).
+## Hence, these classes lie in the 3-radical of 3^5:M11
 ###
 
 ###  
@@ -1022,14 +1035,15 @@ Display(CharTable_SuzM5);
 ##
 ## Case  (S,x,r) = (J₂,3A,7).
 ##
-## We check that no (3A,3A)-generated subgroup of J2 has order divisible by 7.
+## We check that no (3A,3A)-generated subgroup of J₂ has order divisible by 7.
 ## First, we find a representative of class 3A of J₂.
 ## Standard generators of J₂ are a and b where a is in class 2B, b is in class 3B, ab has order 7 and ababb has order 12.
 
 J2 := AtlasGroup("J2");  # <permutation group of size 604800 with 2 generators>
 Gens_J2 := GeneratorsOfGroup(J2);;
 a := Gens_J2[1];; b:= Gens_J2[2];;         ## standard generators
-List( [ a, b, a*b, a*b*a*b*b ], Order );   #  [ 2, 3, 7, 12 ]
+List( [ a, b, a*b, a*b*a*b*b ], Order );   
+#  [ 2, 3, 7, 12 ]                         ## this agrees with the definition of standard generators
 
 c := (a*b*a*b*b)^4;;
 
@@ -1060,7 +1074,8 @@ NOrbs := Size(Orbs);    #  10                ## number of orbits
 HS := AtlasGroup("HS");   #  <permutation group of size 44352000 with 2 generators>
 Gens_HS := GeneratorsOfGroup(HS);;
 a := Gens_HS[1];; b:= Gens_HS[2];;       ## standard generators
-List( [ a, b, a*b ], Order );        #  [ 2, 5, 11 ]
+List( [ a, b, a*b ], Order );        
+#  [ 2, 5, 11 ]                          ## this agrees with the definition of standard generators
 
 c := (a*b*a*b^3*a*b^3)^3;;
 Order(c);                # 4
@@ -1092,7 +1107,8 @@ NOrbs := Size(Orbs);     #  17            ## number of orbits
 McL := AtlasGroup("McL");  # <permutation group of size 898128000 with 2 generators>
 Gens_McL := GeneratorsOfGroup(McL);;
 a := Gens_McL[1];; b:= Gens_McL[2];;                       ## standard generators
-List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );   #  [ 2, 5, 11, 7 ]
+List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );   
+#  [ 2, 5, 11, 7 ]                                         ## this agrees with the definition of standard generators
 
 c := (a*b^2)^4;;
 Order(c);                       #  3
@@ -1110,6 +1126,66 @@ NOrbs := Size(Orbs);            #  10      ## number of orbits
 ## Conclusion : No (3A,3A)-generated subgroup of McL has order divisible by either 7 or 11
 ##              Therefore,   β_{McL,r}(3A) = 3,  r = 7, 11
 ###
+
+
+###
+## Section 23.
+##
+##  Fusion into class 3a of J2 from its maximal subgroups U3(3) and PGL2(7)
+## 
+
+
+CharTable_J2     := CharacterTable("J2");;                                  ## character tables of J2 and its maximal subgroups
+CharTable_U3_3   := CharacterTable("J2M1"); #  CharacterTable( "U3(3)" )    ## U3(3)  
+CharTable_L2_7_2 := CharacterTable("J2M7"); #  CharacterTable( "L3(2).2" )  ## PGL2(7)
+
+
+ClNames_J2 := ClassNames( CharTable_J2 );;                                   ## names
+ClNames_U3_3 := ClassNames( CharTable_U3_3 );;                               ## of conjugacy 
+ClNames_L2_7_2 := ClassNames( CharTable_L2_7_2 );;                           ## classes      
+
+
+NrClasses_U3_3 := Size( ClNames_U3_3 );      # 14                            ## numbers     
+NrClasses_L2_7_2 := Size( ClNames_L2_7_2 );  #  9                            ## of conjugacy
+
+
+PosClasses3_U3_3  :=     Filtered( [1..NrClasses_U3_3],                            ## positions
+                   n -> OrdersClassRepresentatives( CharTable_U3_3  )[n] = 3  );;  ## of conjugacy classes  
+PosClasses3_L2_7_2 :=     Filtered([1..NrClasses_L2_7_2],                          ## of elements
+                   n -> OrdersClassRepresentatives( CharTable_L2_7_2 )[n] = 3  );; ## of order 3 
+
+
+ClNames_U3_3 {PosClasses3_U3_3 };    #  [ "3a", "3b" ]                             ## names
+ClNames_L2_7_2{PosClasses3_L2_7_2};  #  [ "3a" ]                                   ## of conjugacy classes
+
+PCFs_U3_3  := PossibleClassFusions( CharTable_U3_3,  CharTable_J2 );;             ## possible class fusions
+PCFs_L2_7_2 := PossibleClassFusions( CharTable_L2_7_2, CharTable_J2 );;           ## from maximal subgroups of J2
+
+## Printing class fusions of elements of order 3 into J2 :
+
+## Fusion from U3(3) to J2 :
+
+for pos in PosClasses3_U3_3 do
+   Print( " ", ClNames_U3_3[pos], " -> ", Set( PCFs_U3_3, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
+od;
+
+#  3a -> [ "3a" ]
+#  3b -> [ "3b" ]
+
+##  Conclusion:  Only 3a of U3(3) fuses to 3a of J2
+
+
+## Fusion from PGL2(7) to J2 :
+
+for pos in PosClasses3_L2_7_2 do
+   Print( " ", ClNames_L2_7_2[pos], " -> ", Set( PCFs_L2_7_2, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
+od;
+
+# 3a -> [ "3b" ]
+
+##  Conclusion: No elements of order 3 of PGL2(7) fuse to 3a of J2 
+###
+
 
 ### END ###
 ###########

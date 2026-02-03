@@ -793,8 +793,8 @@ Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-g
 ##
 ##  Analysing class sizes of elements of order 3 
 ##  in the maximal subgroup M = 3_2.U4(3):2'_3 of Suz
-##  and in its sections 3_2.U4(3)  and  U4(3) as stated in 
-##  Table \{cls3} [reference !!!] and required in the proof of Case (Suz,3A,7)  :
+##  and in its sections 3_2.U4(3)  and  U4(3) :
+##
 
 CharTable_SuzM2    := CharacterTable("SuzM2");  # CharacterTable( "3_2.U4(3).2_3'" )    ## character 
 CharTable_3_2_U4_3 := CharacterTable("3_2.U4(3)");;                                     ## tables 

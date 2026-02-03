@@ -1070,7 +1070,7 @@ Conj := ConjugacyClass(HS,c);;            ## conjugacy class of c in HS
 Size(Conj);              # 11550
 
 Orbs := OrbitsDomain( Centr_c, Conj );;   ## orbits of C on the conjugacy class
-NOrbs := Size(Orbs); #  17                ## number of orbits
+NOrbs := Size(Orbs);     #  17            ## number of orbits
 
 2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) ); ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ HS
 # [ 4, 16, 20, 24, 120, 320, 500, 720, 5040 ]
@@ -1079,20 +1079,19 @@ NOrbs := Size(Orbs); #  17                ## number of orbits
 ##              Therefore,   β_{HS,11}(4A) = 3
 ###
 
-***
-
-###  Case  (S,x) = (McL,3A) r = 7,11
+###  
+## Section 22.
 ##
-## We know that  2 ⩽ β_{McL,r}(3A) ⩽ 3
-## We check the orders of all (3A,3A)-generated subgroups of McL
+##  Case  (S,x) = (McL,3A),  r = 7,11
+##
+## We check that the orders of all (3A,3A)-generated subgroups of McL have orders not divisible by 7 and 11
 ## First, we find a representative of 3A of McL
 ## Standard generators of the McLaughlin group McL are a and b where a is in class 2A, b is in class 5A, 
 ## ab has order 11 and ababababbababbabb has order 7
 
-
 McL := AtlasGroup("McL");  # <permutation group of size 898128000 with 2 generators>
 Gens_McL := GeneratorsOfGroup(McL);;
-a := Gens_McL[1];; b:= Gens_McL[2];;         # standard generators
+a := Gens_McL[1];; b:= Gens_McL[2];;                       ## standard generators
 List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );   #  [ 2, 5, 11, 7 ]
 
 c := (a*b^2)^4;;
@@ -1103,13 +1102,14 @@ Conj := ConjugacyClass(McL,c);;
 Size(Conj);                     #  30800
 
 Orbs := OrbitsDomain( Centr_c, Conj );;
-NOrbs := Size(Orbs);            #  10    ## number of orbits
+NOrbs := Size(Orbs);            #  10      ## number of orbits
 
 2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) );  ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ McL
-#  [ 3, 9, 24, 120, 375 ]       ## not divisible by 7 or 11
+#  [ 3, 9, 24, 120, 375 ]                  ## not divisible by 7 or 11
 
 ## Conclusion : No (3A,3A)-generated subgroup of McL has order divisible by either 7 or 11
 ##              Therefore,   β_{McL,r}(3A) = 3,  r = 7, 11
 ###
 
-
+### END ###
+###########

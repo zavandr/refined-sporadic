@@ -37,7 +37,7 @@ result:=[];;                                                                    
                                                                                   ##  the product of some two representatives of 3X has order divisible by r,
                                                                                   ##  <OtherPrimes> is the prime divisors ≠ 3 of |S| not in <FoundPrimes>
 
-CharTable := "";; pos_3X := 0;;  pos_4X := 0;;                                    ## defining these to suppress GAP's warning when used inside the following loops
+CharTable := "";; pos_3X := 0;;  pos_4X := 0;;                                    ## this suppresses GAP's warnings 'Unbound global variable'
 
 for pair in pairs do                                                              ## running through all exceptional pairs
 

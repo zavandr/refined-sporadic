@@ -188,7 +188,7 @@ ForAll( ListMCentr, l -> l[1] < l[2] );   # true
 ## Section 4.
 ##
 ## We prove that α( U6(2), 3b ) ⩽ 3 
-## by finding explicilty 3 generators of U6(3) in class 3b
+## by finding explicitly 3 generators of U6(3) in class 3b
 ## Standard generators of U6(2) are a and b where a is in class 2A, b has order 7, ab has order 11 and abb has order 18.
 
 U6_2 := AtlasGroup("U6(2)");

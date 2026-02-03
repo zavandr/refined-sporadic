@@ -15,10 +15,10 @@
 ###
 ## Section 1. 
 ##
-## We consider the exceptional pairs (S,mX) with m > 2  and  α(x) > 2 from Theorem 4 [check reference !!!]
-## and find prime divisors r of |S| with nonzero multiplication coefficients ( mX, mX, nX ) for n divisible by r.
+## We consider the exceptional pairs (S,mX) with m > 2  and  α(x) > 2 from Proposition 3 and find 
+## the prime divisors r of |S| with nonzero multiplication coefficients ( mX, mX, nX ) for n divisible by r.
 ##
-## Column 3 of Table 1 [check reference !!!] of the paper is based on these calculations
+## Column 3 of Table 1 of the paper is based on these calculations
 ##
 ## First, we deal with the elements of order m = 3 :
 ## Namely, for every exceptional pair (S,3X) we find all prime divisors r of |S|
@@ -37,7 +37,7 @@ result:=[];                                                                     
                                                                                   ##  the product of some two representatives of 3X has order divisible by r,
                                                                                   ##  <OtherPrimes> is the prime divisors ≠ 3 of |S| not in <FoundPrimes>
 
-for pair in pairs do 
+for pair in pairs do                                                              ## running through all exceptional pairs
 
    CharTable := CharacterTable( pair[1] );                                        ## character table of current group 
 
@@ -67,7 +67,7 @@ for pair in pairs do
  
 od;
 
-Perform(result,function(tup) Print(tup,"\n"); end);                               ## print the result
+Perform( result, function(tup) Print(tup,"\n"); end );                            ## print the result
 
 # [ "J2", "3a", [ 2, 5 ], [ 7 ] ]
 # [ "McL", "3a", [ 2, 5 ], [ 7, 11 ] ]
@@ -91,14 +91,14 @@ pairs := [ ["HS","4a"], ["HN.2","4d"] ];;                                       
                                                                                   ##  with <group_name> being GAP's name of S and 
                                                                                   ##  <class_name_4X> the name of class 4X
 
-result:=[];                                                                       ## a list to collect the total result. Each member of this list is a ....
+result:=[];                                                                       ## a list to collect the total result. Each member of this list is a quadruple
                                                                                   ## [ <group_name>, <class_name_4X>, <FoundPrimes>, <OtherPrimes>], where 
                                                                                   ##  <group_name> and <class_name_4X> are as above,
                                                                                   ##  <FoundPrimes> is the list of odd prime divisors r of |S| such that 
                                                                                   ##  the product of some two representatives of 4X has order divisible by r,
                                                                                   ##  <OtherPrimes> is the odd prime divisors of |S| not in <FoundPrimes>
 
-for pair in pairs do 
+for pair in pairs do                                                              ## running through all exceptional pairs
 
    CharTable := CharacterTable( pair[1] );                                        ## character table of current group 
 
@@ -119,7 +119,7 @@ for pair in pairs do
    
    OrderFactors := List( OrdersReps{PositionsNonZero}, Factors );                 ## factorized orders of elements in found classes
     
-   FoundOddPrimes := Difference( Union(OrderFactors), [1,2]);                     ## odd prime divisors of found orders
+   FoundOddPrimes := Difference( Union(OrderFactors), [1,2] );                    ## odd prime divisors of found orders
 
      
    OtherOddPrimes := Difference( AllOddPrimes, FoundOddPrimes );                  ## remaining odd primes
@@ -139,8 +139,7 @@ Perform(result,function(tup) Print(tup,"\n"); end);                             
 ## Section 2.
 ##
 ## We show that α( U5(2), 3C ) ⩽ 3  
-## as claimed in the proof of Lemma 1 \ref{more_alpha}, case S = U5(2) 
-
+## 
 
 CharTab_U5_2 := CharacterTable("U5(2)");;                                                        ##  character table of U5(2)
 
@@ -155,7 +154,7 @@ ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.12a,
 ## Section 3.
 ##
 ##  We now show that α( U5(2), 3C ) > 2
-##  as claimed in the proof of Lemma 1 \ref{more_alpha}, case S = U5(2) 
+##  
 
 NrClasses_U5_2 := Size( Irr( CharTab_U5_2 ) );;                                                          ## number of conjugacy classes  
 
@@ -169,14 +168,14 @@ ListMCentr := List( [1..NrClasses_U5_2], n ->                                   
 #   [ 0, 108 ], [ 6, 108 ], [ 0, 36 ], [ 0, 16 ], [ 0, 54 ], [ 0, 54 ], [ 0, 27 ], [ 0, 27 ], [ 0, 11 ], [ 0, 11 ], [ 16, 144 ], [ 0, 144 ], [ 0, 72 ], 
 #   [ 0, 72 ], [ 0, 36 ], [ 0, 24 ], [ 0, 24 ], [ 0, 24 ], [ 6, 24 ], [ 0, 15 ], [ 5, 15 ], [ 0, 18 ], [ 0, 18 ] ]
 
-## Checking if the inequality from Proposition \ref{DiM_Zal} is satisfied for each triple ( 3C, 3C, nX ) :
+## Checking if the inequality from Proposition 1 is satisfied for each triple ( 3C, 3C, nX ) :
 
 ForAll( ListMCentr, l -> l[1] < l[2] );   # true
 
 ## Obs. We did not exclude the classes nX with m( 3C, 3C, nX ) = 0 for which there are no x,y ∊ 3C
 ##       with xy ∊ nX because the required inequality is obviously satisfied in these cases.  
 
-## => Proposition [ \ref{DiM_Zal} ] implies that U5(2) cannot be generated by two elements in 3C, and so α( U5(2), 3C ) > 2
+## => Proposition 1 implies that U5(2) cannot be generated by two elements in 3C, and so α( U5(2), 3C ) > 2
 
 ## Conclusion: We have shown that α( U5(2), 3C ) = 3 
 ###
@@ -185,7 +184,7 @@ ForAll( ListMCentr, l -> l[1] < l[2] );   # true
 ###
 ## Section 4.
 ##
-## We prove that α( U6(2), 3b ) ⩽ 3  as claimed in the proof of [ Lemma \ref{more_alpha}, Case S = U6(2) ]
+## We prove that α( U6(2), 3b ) ⩽ 3 
 ## by finding explicilty 3 generators of U6(3) in class 3b
 ## Standard generators of U6(2) are a and b where a is in class 2A, b has order 7, ab has order 11 and abb has order 18.
 
@@ -236,7 +235,6 @@ ClNames_U6_2{PosIneqHolds}; # [ "7a", "9c" ]                         ## found cl
 ##  m( 3f, 3f, 21a ) = 0 
 ##  m( 3f, 3f, 21b ) = 0 
 ##
-## as claimed in the proof of subcase nX=7A of Lemma \ref{more_alpha}
 
 CharTab_3_U6_2 := CharacterTable("3.U6(2)");;                        ## character table of SU6(2)
 ClassMultiplicationCoefficient( CharTab_3_U6_2, CharTab_3_U6_2.3f, CharTab_3_U6_2.3f, CharTab_3_U6_2.7a );    # 7    
@@ -284,7 +282,7 @@ PCFs_M12     := PossibleClassFusions( CharTable_M12    , CharTable_Fi22 );;     
 
 ## Printing fusions of elements of order 3 into Fi22
 
-## Fusion for 2.U6(2) :
+## 7(a). Fusion for 2.U6(2) :
 
 for pos in PosClasses3_2U6_2 do
    Print( "  ", ClNames_2U6_2[pos], " -> ", Set( PCFs_2U6_2, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
@@ -295,7 +293,7 @@ od;
 #  3c -> [ "3c" ]        ##  Conclusion:  Only 3b of 2.U6(2) fuses into 3B of Fi22
 
 
-## Fusion for 2^10:M22 :
+## 7(b). Fusion for 2^10:M22 :
 
 for pos in PosClasses3_2e10M22 do
    Print( "  ", ClNames_2e10M22[pos], " -> ", Set( PCFs_2e10M22, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
@@ -304,7 +302,7 @@ od;
 #  3a -> [ "3c" ]        ##  Conclusion:  No fusion from 2^10:M22 into 3B of Fi22
 
 
-## Fusion for M12 :
+## 7(c). Fusion for M12 :
 
 for pos in PosClasses3_M12 do
    Print( "  ", ClNames_M12[pos], " -> ", Set( PCFs_M12, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
@@ -316,7 +314,7 @@ od;
 ###
 ## Section 8.
 ##
-##  Fusion into class 3B of U6(2) from its maximal subgroups U5(2) and M12  
+##  Fusion into class 3b of U6(2) from its maximal subgroups U5(2) and M22  
 ## 
 
 CharTable_U6_2 := CharacterTable( "U6(2)" );;                             ## character tables
@@ -347,7 +345,7 @@ PCFs_M22  := PossibleClassFusions( CharTable_M22, CharTable_U6_2 );;      ## fro
 
 ## Printing fusions of elements of order 3 into U6(2)
 
-## Fusion for U5(2) :
+## 8(a). Fusion for U5(2) :
 
 for pos in PosClasses3_U5_2 do
    Print( "  ", ClNames_U5_2[pos], " -> ", Set( PCFs_U5_2, cf -> ClNames_U6_2[ cf[ pos ] ]), "\n"  );
@@ -358,9 +356,9 @@ od;
 #  3c -> [ "3b" ]
 #  3d -> [ "3b" ]
 #  3e -> [ "3a" ]
-#  3f -> [ "3c" ]     ##  Conclusion:  Classes 3c and 3d of U5(2) fuse into 3B of U6(2)
+#  3f -> [ "3c" ]     ##  Conclusion:  Classes 3c and 3d of U5(2) fuse into 3b of U6(2)
 
-## Fusion for M22 :
+## 8(b). Fusion for M22 :
 
 for pos in PosClasses3_M22 do
    Print( "  ", ClNames_M22[pos], " -> ", Set( PCFs_M22, cf -> ClNames_U6_2[ cf[ pos ] ]), "\n"  );
@@ -371,7 +369,7 @@ od;
 ###
 ## Section 9.
 ##
-##  Fusion into classes 3B and 3C of U5(2) from its maximal subgroup L2(11)
+##  Fusion into classes 3c and 3d of U5(2) from its maximal subgroup L2(11)
 ## 
 
 
@@ -398,7 +396,7 @@ for pos in PosClasses3_L2_11 do
    Print( "  ", ClNames_L2_11[pos], " -> ", Set( PCFs_L2_11, cf -> ClNames_U5_2[ cf[ pos ] ]), "\n"  );
 od;
 
-#   3a -> [ "3f" ]    ##  Conclusion:   No fusion from L2(11) into either 3B or 3C of U5(2)
+#   3a -> [ "3f" ]    ##  Conclusion:   No fusion from L2(11) into either 3c or 3d of U5(2)
 
 ###
 #####
@@ -671,16 +669,18 @@ ClNames_PGL2_7{PosClasses3_PGL2_7};  #  [ "3a" ]                                
 PCFs_U3_3   := PossibleClassFusions( CharTable_U3_3  , CharTable_J2 );;            ## possible class fusions
 PCFs_PGL2_7 := PossibleClassFusions( CharTable_PGL2_7, CharTable_J2 );;            ## from maximal subgroups of J2
 
-## Printing fusions of elements of order 3 of U3(3) into J2 : 
+## Fusion of elements of order 3 of U3(3) into J2 : 
 
 for pos in PosClasses3_U3_3 do
    Print( "  ", ClNames_U3_3[pos], " -> ", Set( PCFs_U3_3, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
 od;
 
 #  3a -> [ "3a" ]
-#  3b -> [ "3b" ]   ##  Conclusion:  Only 3a of U3(3) fuses to 3a of J2
+#  3b -> [ "3b" ]   
 
-## Printing fusions of elements of order 3 of PGL2(7) into J2 : 
+##  Conclusion:  Only 3a of U3(3) fuses to 3a of J2
+
+## Fusions of elements of order 3 of PGL2(7) into J2 : 
 
 for pos in PosClasses3_PGL2_7 do
    Print( "  ", ClNames_PGL2_7[pos], " -> ", Set( PCFs_PGL2_7, cf -> ClNames_J2[ cf[ pos ] ]), "\n"  );
@@ -693,7 +693,7 @@ od;
 ## Section 13.
 ##
 ##  Proving that no (3a,3a)-generated subgroup of G2(4) has order divisible by either 7 or 13.
-##  as claimed in the proof of [ Cases (Suz,3A,7)  and  (Suz,3A,13)  of Theorem \ref{main}  ] 
+##  
 
 ## Standard generators of G2(4) are a and b, where a is in class 2A, b is in class 5C/D, 
 ## ab has order 13, abb has order 13, and ababb has order 15.
@@ -731,7 +731,7 @@ List(2Groups,Size);  # [ 24, 60, 60, 24, 12, 12, 12, 12, 3, 3 ]
 ## Section 14.
 ##
 ##  Proving that no (3a,3a)-generated subgroup of U4(3) has order divisible by 7.
-##  as claimed in the proof of [ Case (Suz,3A,7)  of Theorem \ref{main} ] 
+##  
 
 ##  Standard generators of U4(3) are a and b where a has order 2, b is in class 6A, ab has order 7 and abababbababb has order 5.
 
@@ -765,7 +765,7 @@ NOrbs := Size(Orbs); #  6                           ## number of orbits
 ## Section 15.
 ## 
 ##  Proving that no (3a,3a)-generated subgroup of U3(3) has order divisible by 7.
-##  as claimed in the proof of [ Case (Suz,3A,7)  <- Reference !!! ] 
+##  
 
 ##  Standard generators of U3(3) are a and b where a has order 2, b has order 6 and ab has order 7.
 
@@ -1020,7 +1020,7 @@ Display(CharTable_SuzM5);
 
 ## It follows from the character values on classes 3a and 3b that
 ## the first 10 characters are unfaithful with classes 3a and 3b 
-## in their kernels (the lifts of irreducible character of M11).
+## in their kernels (the lifts of irreducible characters of M11).
 ## Hence, these classes lie in the 3-radical of 3^5:M11
 ###
 
@@ -1061,7 +1061,7 @@ NOrbs := Size(Orbs);    #  10                ## number of orbits
 ##
 ## Case  (S,x,r) = (HS,4A,11)
 ##
-## We check that the orders of all (4A,4A)-generated subgroups of HN have order not divisible by 11
+## We check that all (4A,4A)-generated subgroups of HN have order not divisible by 11
 ## First, we find a representative of class 4A of HS
 ## Standard generators of HS are a and b where a is in class 2A, b is in class 5A and ab has order 11
 
@@ -1093,7 +1093,7 @@ NOrbs := Size(Orbs);     #  17            ## number of orbits
 ##
 ##  Case  (S,x) = (McL,3A),  r = 7,11
 ##
-## We check that the orders of all (3A,3A)-generated subgroups of McL have orders not divisible by 7 and 11
+## We check that all (3A,3A)-generated subgroups of McL have orders not divisible by 7 and 11
 ## First, we find a representative of 3A of McL
 ## Standard generators of the McLaughlin group McL are a and b where a is in class 2A, b is in class 5A, 
 ## ab has order 11 and ababababbababbabb has order 7

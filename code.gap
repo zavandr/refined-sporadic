@@ -30,12 +30,14 @@ pairs := [ ["J2","3a"],   ["McL","3a"],  ["Ly","3a"],   ["Co1","3a"],           
            ["F3+","3a"],  ["F3+","3b"],  ["Suz","3a"]  ];;                        ## <class_name_3X> the name of class 3X
 
 
-result:=[];                                                                       ## a list to collect the total result. Each member of this list is a quadruple
+result:=[];;                                                                      ## a list to collect the total result. Each member of this list is a quadruple
                                                                                   ## [ <group_name>, <class_name_3X>, <FoundPrimes>, <OtherPrimes>], where 
                                                                                   ##  <group_name> and <class_name_3X> are as above,
                                                                                   ##  <FoundPrimes> is the list of prime divisors r ≠ 3 of |S| such that 
                                                                                   ##  the product of some two representatives of 3X has order divisible by r,
                                                                                   ##  <OtherPrimes> is the prime divisors ≠ 3 of |S| not in <FoundPrimes>
+
+CharTable := "";; pos_3X := 0;;  pos_4X := 0;;                                    ## defining these to suppress GAP's warning when used inside the following loops
 
 for pair in pairs do                                                              ## running through all exceptional pairs
 
@@ -91,7 +93,7 @@ pairs := [ ["HS","4a"], ["HN.2","4d"] ];;                                       
                                                                                   ##  with <group_name> being GAP's name of S and 
                                                                                   ##  <class_name_4X> the name of class 4X
 
-result:=[];                                                                       ## a list to collect the total result. Each member of this list is a quadruple
+result:=[];;                                                                      ## a list to collect the total result. Each member of this list is a quadruple
                                                                                   ## [ <group_name>, <class_name_4X>, <FoundPrimes>, <OtherPrimes>], where 
                                                                                   ##  <group_name> and <class_name_4X> are as above,
                                                                                   ##  <FoundPrimes> is the list of odd prime divisors r of |S| such that 
@@ -156,11 +158,12 @@ ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.12a,
 ##  We now show that α( U5(2), 3C ) > 2
 ##  
 
-NrClasses_U5_2 := Size( Irr( CharTab_U5_2 ) );;                                                          ## number of conjugacy classes  
+CharTable_U5_2 := CharacterTable("U5(2)") ;    #   CharacterTable( "U5(2)" )
+NrClasses_U5_2 := Size( Irr( CharTable_U5_2 ) );;                                                   ## number of conjugacy classes  
 
-ListMCentr := List( [1..NrClasses_U5_2], n ->                                                            ## list of pairs [ m( 3C, 3C, nX ), |C(x)| ] 
-     [ ClassMultiplicationCoefficient( CharTab_U5_2, CharTab_U5_2.3c, CharTab_U5_2.3c, n ),              ##           with x ∊ nX for every class nX 
-       SizesCentralizers( CharTab_U5_2 )[n]
+ListMCentr := List( [1..NrClasses_U5_2], n ->                                                       ## list of pairs [ m( 3C, 3C, nX ), |C(x)| ] 
+     [ ClassMultiplicationCoefficient( CharTable_U5_2, CharTable_U5_2.3c, CharTable_U5_2.3c, n ),   ##           with x ∊ nX for every class nX 
+       SizesCentralizers( CharTable_U5_2 )[n]
      ] );
 
 # [ [ 0, 13685760 ], [ 0, 82944 ], [ 0, 4608 ], [ 240, 77760 ], [ 0, 77760 ], [ 0, 3888 ], [ 82, 3888 ], [ 0, 1944 ], [ 2, 324 ], [ 0, 1152 ], [ 0, 384 ], 
@@ -215,7 +218,7 @@ Size( Group( x, x^a, x^b ) );
 CharTab_U6_2 := CharacterTable("U6(2)");;
 
 ClNames_U6_2 := ClassNames(CharTab_U6_2);;                           ## names of conjugacy classes of U6(2)
-NrClasses_U6_2 := Size(ClNames_U6_2);                                ## number of conjugacy classes
+NrClasses_U6_2 := Size(ClNames_U6_2);  # 46                          ## number of conjugacy classes
 
 PosIneqHolds := Filtered( [1..NrClasses_U6_2], n ->                  ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
    ClassMultiplicationCoefficient( CharTab_U6_2, CharTab_U6_2.3b, CharTab_U6_2.3b, n ) >= 
@@ -282,6 +285,7 @@ PCFs_M12     := PossibleClassFusions( CharTable_M12    , CharTable_Fi22 );;     
 
 ## Printing fusions of elements of order 3 into Fi22
 
+
 ## 7(a). Fusion for 2.U6(2) :
 
 for pos in PosClasses3_2U6_2 do
@@ -290,7 +294,9 @@ od;
 
 #  3a -> [ "3a" ]
 #  3b -> [ "3b" ]   
-#  3c -> [ "3c" ]        ##  Conclusion:  Only 3b of 2.U6(2) fuses into 3B of Fi22
+#  3c -> [ "3c" ]        
+
+##  Conclusion:  Only 3b of 2.U6(2) fuses into 3B of Fi22
 
 
 ## 7(b). Fusion for 2^10:M22 :
@@ -299,7 +305,9 @@ for pos in PosClasses3_2e10M22 do
    Print( "  ", ClNames_2e10M22[pos], " -> ", Set( PCFs_2e10M22, cf -> ClNames_Fi22[ cf[ pos ] ]), "\n"  );
 od;
 
-#  3a -> [ "3c" ]        ##  Conclusion:  No fusion from 2^10:M22 into 3B of Fi22
+#  3a -> [ "3c" ]        
+
+##  Conclusion:  No fusion from 2^10:M22 into 3B of Fi22
 
 
 ## 7(c). Fusion for M12 :
@@ -309,7 +317,10 @@ for pos in PosClasses3_M12 do
 od;
 
 #  3a -> [ "3d" ]
-#  3b -> [ "3c" ]        ##  Conclusion:  No fusion from M12 into 3B of Fi22
+#  3b -> [ "3c" ]        
+
+##  Conclusion:  No fusion from M12 into 3B of Fi22
+###
 
 ###
 ## Section 8.
@@ -342,8 +353,8 @@ ClNames_M22 { PosClasses3_M22  };                                         ## of 
 PCFs_U5_2 := PossibleClassFusions( CharTable_U5_2  , CharTable_U6_2 );;   ## possible class fusions
 PCFs_M22  := PossibleClassFusions( CharTable_M22, CharTable_U6_2 );;      ## from maximal subgroups
 
-
 ## Printing fusions of elements of order 3 into U6(2)
+
 
 ## 8(a). Fusion for U5(2) :
 
@@ -356,7 +367,10 @@ od;
 #  3c -> [ "3b" ]
 #  3d -> [ "3b" ]
 #  3e -> [ "3a" ]
-#  3f -> [ "3c" ]     ##  Conclusion:  Classes 3c and 3d of U5(2) fuse into 3b of U6(2)
+#  3f -> [ "3c" ]    
+
+##  Conclusion:  Classes 3c and 3d of U5(2) fuse into 3b of U6(2)
+
 
 ## 8(b). Fusion for M22 :
 
@@ -364,14 +378,17 @@ for pos in PosClasses3_M22 do
    Print( "  ", ClNames_M22[pos], " -> ", Set( PCFs_M22, cf -> ClNames_U6_2[ cf[ pos ] ]), "\n"  );
 od;
 
-#  3a -> [ "3c" ]      ##  Conclusion:   No fusion from M22 into 3B of U6(2)
+#  3a -> [ "3c" ]      
+
+##  Conclusion:   No fusion from M22 into 3B of U6(2)
+###
+
 
 ###
 ## Section 9.
 ##
 ##  Fusion into classes 3c and 3d of U5(2) from its maximal subgroup L2(11)
 ## 
-
 
 CharTable_U5_2  := CharacterTable( "U5(2)"  );;                                 ## character tables of U5(2)
 CharTable_L2_11 := CharacterTable( "L2(11)" );;                                 ## and its maximal subgroup L2(11)
@@ -396,19 +413,19 @@ for pos in PosClasses3_L2_11 do
    Print( "  ", ClNames_L2_11[pos], " -> ", Set( PCFs_L2_11, cf -> ClNames_U5_2[ cf[ pos ] ]), "\n"  );
 od;
 
-#   3a -> [ "3f" ]    ##  Conclusion:   No fusion from L2(11) into either 3c or 3d of U5(2)
+#   3a -> [ "3f" ]    
 
+##  Conclusion:   No fusion from L2(11) into either 3c or 3d of U5(2)
 ###
-#####
 
 
 ### 
 ## Section 10.
 ##
 ##  Checking that there are three elements in 3A of Suz whose product has order 7 and 13
-##  as claimed in the proofs of cases  (Suz,3A,r), r = 7, 13
+##
 
-CharTable_Suz  := CharacterTable("Suz");                           ## character tables of Suz
+CharTable_Suz  := CharacterTable("Suz");;                         ## character table of Suz
 
 ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
                                           CharTable_Suz.3a, 
@@ -638,6 +655,8 @@ od;
 
 ## Conclusion: No elements of order 3 of A7 fuse to 3A of Suz 
 ###
+
+
 
 ###
 ## Section 12.
@@ -920,7 +939,7 @@ Class : 3c   Size : 17920     ##  = product of the above                        
 ##
 ##  Finding a representative of class 3a of U5(2).2 and checking whether 
 ##  every (3a,3a,3a)-generated subgroup of U5(2).2 has order not divisible by 11
-##  as claimed in the proof of Case (Suz,3A,11) :
+##  
 
 ## Standard generators of U5(2).2 are a and b, where a has order 2 (so is in class 2C), 
 ## b has order 4 (so is in class 4D), ab has order 11 and ababb has order 4.
@@ -956,7 +975,7 @@ Orbs := OrbitsDomain(  Centr_c, Tuples(Conj,2), OnTuples );;   ##  Orbits of C o
 ## Section 19.
 ##
 ##  Checking that class 3a of the maximal subgroup 3^5:M11 of Suz lies in its 3-radical
-##  as claimed in the proof of Case (Suz,3A, 11)  
+##  
 
 
 Display(CharTable_SuzM5);

@@ -926,9 +926,9 @@ for n in [ 1..Size(PosClasses3_SuzM8) ] do
           "   Size : ", PrintString(SizesCClasses3_SuzM8[n],5), "\n" );
 od;
 
-Class : 3a   Size :  2240     ##  = size of (a unique) class C2 of elements of order 3 in L3(4)                        <->  elements (1,y), y in C2 
-Class : 3b   Size :     8     ##  = size of two classes of elements of order 3 in A4 merged to C1 by outer involution  <->  elements (x,1), x in C1
-Class : 3c   Size : 17920     ##  = product of the above                                                               <->  elements (x,y), x in C1, y in C2 
+# Class : 3a   Size :  2240     ##  = size of (a unique) class C2 of elements of order 3 in L3(4)                        <->  elements (1,y), y in C2 
+# Class : 3b   Size :     8     ##  = size of two classes of elements of order 3 in A4 merged to C1 by outer involution  <->  elements (x,1), x in C1
+# Class : 3c   Size : 17920     ##  = product of the above                                                               <->  elements (x,y), x in C1, y in C2 
   
 ## Conclusion: The whole class 3b  of  ( A4 × L3(4) ) : 2  = SuzM8 generates 
 ##             the normal subgroup A4 whose order is not divisible by 7
@@ -978,7 +978,7 @@ Orbs := OrbitsDomain(  Centr_c, Tuples(Conj,2), OnTuples );;   ##  Orbits of C o
 ##  
 
 
-Display(CharTable_SuzM5);
+Display(CharacterTable("SuzM5"));
 
 #   3^5:M11
 #   
@@ -1125,12 +1125,12 @@ List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );
 
 c := (a*b^2)^4;;
 Order(c);                       #  3
-Centr_c := Centralizer(McL,c);
+Centr_c := Centralizer(McL,c);;            ## centraliser C of c in McL
 Size(Centr_c);                  #  29160   ## => c is in class 3A   
-Conj := ConjugacyClass(McL,c);;
+Conj := ConjugacyClass(McL,c);;            ## conjugacy class of c in McL
 Size(Conj);                     #  30800
 
-Orbs := OrbitsDomain( Centr_c, Conj );;
+Orbs := OrbitsDomain( Centr_c, Conj );;    ## orbits of C on the conjugacy class
 NOrbs := Size(Orbs);            #  10      ## number of orbits
 
 2GroupsSizes := Set( Orbs, o -> Size( Group( c, Representative(o) ) ) );  ## the set of orders of 2-generated subgroups < c, c^g >, g ∊ McL

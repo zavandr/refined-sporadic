@@ -163,7 +163,7 @@ NrClasses_U5_2 := Size( Irr( CharTable_U5_2 ) );;                               
 
 ListMCentr := List( [1..NrClasses_U5_2], n ->                                                       ## list of pairs [ m( 3C, 3C, nX ), |C(x)| ] 
      [ ClassMultiplicationCoefficient( CharTable_U5_2, CharTable_U5_2.3c, CharTable_U5_2.3c, n ),   ##           with x ∊ nX for every class nX 
-       SizesCentralizers( CharTable_U5_2 )[n]
+       SizesCentralisers( CharTable_U5_2 )[n]
      ] );
 
 # [ [ 0, 13685760 ], [ 0, 82944 ], [ 0, 4608 ], [ 240, 77760 ], [ 0, 77760 ], [ 0, 3888 ], [ 82, 3888 ], [ 0, 1944 ], [ 2, 324 ], [ 0, 1152 ], [ 0, 384 ], 
@@ -200,7 +200,7 @@ List( [ a, b, a*b, a*b^2 ], Order );
 
 x := (a*b^2) ^ 6;;
 Order( x );                     # 3
-Size( Centralizer( U6_2, x ) ); # 46656   ## this confirms that x is in class 3b
+Size( Centraliser( U6_2, x ) ); # 46656   ## this confirms that x is in class 3b
 
 Size( Group( x, x^a, x^b ) );
 # 9196830720                              ## = |U6(2)|
@@ -222,7 +222,7 @@ NrClasses_U6_2 := Size(ClNames_U6_2);  # 46                          ## number o
 
 PosIneqHolds := Filtered( [1..NrClasses_U6_2], n ->                  ## positions of classes nX for which m( 3b, 3b, nX ) >= |C_S(x)|
    ClassMultiplicationCoefficient( CharTab_U6_2, CharTab_U6_2.3b, CharTab_U6_2.3b, n ) >= 
-                         SizesCentralizers( CharTab_U6_2 )[n] );;
+                         SizesCentralisers( CharTab_U6_2 )[n] );;
 
 ClNames_U6_2{PosIneqHolds}; # [ "7a", "9c" ]                         ## found classes nX 
 
@@ -728,7 +728,7 @@ List( [ a, b, a*b, a*b^2, (a*b)^2*b ], Order );
 
 c := (a*b*a*b*b)^5;;     
 Order(c);   # 3     
-Centr_c := Centralizer(G2_4,c);;                ## Centralizer C(c) in G2(4)
+Centr_c := Centraliser(G2_4,c);;                ## Centraliser C(c) in G2(4)
 Size(Centr_c);    #  60480                      ## this confirms that c is in class 3a
 
 CnjClass_c := ConjugacyClass( G2_4, c );;       ## conjugacy class of c
@@ -765,7 +765,7 @@ List([ a, b, a*b, (a*b)^3*(b*a)^2*b^2 ], Order);
 
 c:=b^2;;
 Order(c);  # 3
-Centr_c := Centralizer(U4_3,c);
+Centr_c := Centraliser(U4_3,c);
 Size(Centr_c);  # 5832   ##  => c is in class 3a
 
 ## Order of (3a,3a)-generated subgroups:
@@ -798,7 +798,7 @@ List( [ a, b, a*b ], Order );
 
 c := b^2;;
 Order(c);                  # 3
-Size(Centralizer(U3_3,c)); # 108                      ## => c is in class 3a
+Size(Centraliser(U3_3,c)); # 108                      ## => c is in class 3a
 
 Conj := ConjugacyClass(U3_3,c);;
 Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-generated subgroups of U3(3)
@@ -954,7 +954,7 @@ List( [ a, b, a*b, (a*b)^2*b ], Order );
 
 c := (a*b*(a*b^2)^2)^4;;
 Order(c);                # 3
-Centr_c := Centralizer(U5_2_2,c);;            ## centraliser C of c
+Centr_c := Centraliser(U5_2_2,c);;            ## centraliser C of c
 Size(Centr_c);          # 77760               ## => c is in class 3a of  U5(2).2 
 Conj := ConjugacyClass( U5_2_2, c );;         ## conjugacy class of c
 
@@ -1061,7 +1061,7 @@ List( [ a, b, a*b, a*b*a*b*b ], Order );
 c := (a*b*a*b*b)^4;;
 
 Order(c);               #  3
-Centr_c := Centralizer(J2,c);;               ## centraliser C of c in J2 
+Centr_c := Centraliser(J2,c);;               ## centraliser C of c in J2 
 Size(Centr_c);          #  1080              ##  =>  c is in 3A. 
 Conj := ConjugacyClass(J2,c);;               ## conjugacy class of c in J2
   
@@ -1092,7 +1092,7 @@ List( [ a, b, a*b ], Order );
 
 c := (a*b*a*b^3*a*b^3)^3;;
 Order(c);                # 4
-Centr_c := Centralizer(HS,c);;            ## centraliser C of c in HS
+Centr_c := Centraliser(HS,c);;            ## centraliser C of c in HS
 Size(Centr_c);           # 3840           ##  =>  c is in class 4A 
 Conj := ConjugacyClass(HS,c);;            ## conjugacy class of c in HS
 Size(Conj);              # 11550
@@ -1125,7 +1125,7 @@ List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );
 
 c := (a*b^2)^4;;
 Order(c);                       #  3
-Centr_c := Centralizer(McL,c);;            ## centraliser C of c in McL
+Centr_c := Centraliser(McL,c);;            ## centraliser C of c in McL
 Size(Centr_c);                  #  29160   ## => c is in class 3A   
 Conj := ConjugacyClass(McL,c);;            ## conjugacy class of c in McL
 Size(Conj);                     #  30800

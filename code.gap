@@ -389,10 +389,10 @@ PosClasses3_L2_11 := Filtered( [1..NrClasses_L2_11  ],                          
 ClNames_L2_11{ PosClasses3_L2_11 }; #  [ "3a" ]                                 ## names of conjugacy classes 
                                                                                 ## of elements of order 3 
 
-PCFs_L2_11 := PossibleClassFusions( CharTable_L2_11  , CharTable_U5_2 );;       ## possible class fusions from maximal subgroup
+PCFs_L2_11 := PossibleClassFusions( CharTable_L2_11  , CharTable_U5_2 );;       ## possible class Fusion from maximal subgroup
 
 
-## Printing fusions from L2(11) of elements of order 3 into U5(2) 
+## Printing Fusion from L2(11) of elements of order 3 into U5(2) 
 
 for pos in PosClasses3_L2_11 do
    Print( "  ", ClNames_L2_11[pos], " -> ", Set( PCFs_L2_11, cf -> ClNames_U5_2[ cf[ pos ] ]), "\n"  );
@@ -434,10 +434,9 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
 ###  
 ## Section 11.
 ##
-##   Fusions into class 3A of Suz from its maximal subgroups 
+##   Fusion into class 3A of Suz from its maximal subgroups 
 ##   G2(4),  3_2.U4(3):2'_3,  U5(2),  3^5:M11,  J2:2,  (A4 × L3(4)):2,  M12:2,  L3(3):2,  L2(25),  A7
 ## 
-##   This is required for considering the cases (Suz,3A,7), (Suz,3A,11), and (Suz,3A,13) in the proof of Theorem \{main}
 
 CharTable_Suz   := CharacterTable("Suz");;                                         ## character tables of Suz and its maximal subgroups
 CharTable_G2_4  := CharacterTable("SuzM1");  # CharacterTable( "G2(4)" )           ## G2(4),
@@ -470,7 +469,7 @@ NrClasses_SuzM5 := Size( ClNames_SuzM5 );  #  24                                
 NrClasses_SuzM6 := Size( ClNames_SuzM6 );  #  27                                   ## 
 NrClasses_SuzM8 := Size( ClNames_SuzM8 );  #  38                                   ##
 NrClasses_SuzM10:= Size( ClNames_SuzM10);  #  21                                   ##
-NrClasses_L3_3_2:= Size( ClNames_L3_3_2 ); #                                       ##
+NrClasses_L3_3_2:= Size( ClNames_L3_3_2 ); #  15                                   ##
 NrClasses_L2_25 := Size( ClNames_L2_25 );  #  15                                   ##
 NrClasses_A7    := Size( ClNames_A7    );  #   9                                   ##
 
@@ -520,7 +519,7 @@ PCFs_A7    := PossibleClassFusions( CharTable_A7, CharTable_Suz );;             
 
 ## Printing class fusions of elements of order 3 into Suz :
 
-## Fusion from G2(4) to Suz :
+## 11(a). Fusion from G2(4) to Suz :
 
 for pos in PosClasses3_G2_4 do
    Print( " ", ClNames_G2_4[pos], " -> ", Set( PCFs_G2_4, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -531,7 +530,7 @@ od;
 
 ##  Conclusion:  Only 3a of G2(4) fuses to 3A of Suz
 
-## Fusion from 3_2.U4(3):2'_3 to Suz :
+## 11(b). Fusion from 3_2.U4(3):2'_3 to Suz :
 
 for pos in PosClasses3_SuzM2 do
    Print( " ", ClNames_SuzM2[pos], " -> ", Set( PCFs_SuzM2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -545,8 +544,7 @@ od;
 
 ## Conclusion:  Only classes 3a and 3b of 3_2.U4(3):2'_3 fuse to 3A of Suz
 
-
-## Fusion from U5(2) to Suz :
+## 11(c). Fusion from U5(2) to Suz :
 
 for pos in PosClasses3_U5_2 do
    Print( " ", ClNames_U5_2[pos], " -> ", Set( PCFs_U5_2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -561,8 +559,7 @@ od;
 
 ## Conclusion:  Only classes 3a and 3b of U5(2) fuse to 3A of Suz
 
-
-## Fusion from 3^5:M11 to Suz :
+## 11(d). Fusion from 3^5:M11 to Suz :
 
 for pos in PosClasses3_SuzM5 do
    Print( " ", ClNames_SuzM5[pos], " -> ", Set( PCFs_SuzM5, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -575,8 +572,7 @@ od;
 
 ## Conclusion:  Only class 3a of 3^5:M11 fuses to 3A of Suz
 
-
-## Fusions from J2:2 to Suz :
+## 11(e). Fusion from J2:2 to Suz :
 
 for pos in PosClasses3_SuzM6 do
    Print( " ", ClNames_SuzM6[pos], " -> ", Set( PCFs_SuzM6, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -587,8 +583,7 @@ od;
 
 ## Conclusion: Only class 3a of J2:2 fuses to 3A of Suz 
 
-
-## Fusions from (A4 x L3(4)):2 to Suz :
+## 11(f). Fusion from (A4 x L3(4)):2 to Suz :
 
 for pos in PosClasses3_SuzM8 do
    Print( " ", ClNames_SuzM8[pos], " -> ", Set( PCFs_SuzM8, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -600,7 +595,7 @@ od;
 
 ## Conclusion: Only class 3b of (A4 x L3(4)):2 fuses to 3A of Suz 
 
-## Fusions from M12:2 to Suz :
+## 11(g). Fusion from M12:2 to Suz :
 
 for pos in PosClasses3_SuzM10 do
    Print( " ", ClNames_SuzM10[pos], " -> ", Set( PCFs_SuzM10, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -611,8 +606,7 @@ od;
 
 ## Conclusion: No elements of order 3 in M12:2 fuse to 3A of Suz 
 
-
-## Fusions from L3(3):2 to Suz :
+## 11(h). Fusion from L3(3):2 to Suz :
 
 for pos in PosClasses3_L3_3_2 do
    Print( " ", ClNames_L3_3_2[pos], " -> ", Set( PCFs_L3_3_2, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -624,7 +618,7 @@ od;
 ## Conclusion: No elements of order 3 in L3(3):2 fuse to 3A of Suz 
 
 
-## Fusions from L2(25) to Suz :
+## 11(i). Fusion from L2(25) to Suz :
 
 for pos in PosClasses3_L2_25 do
    Print( " ", ClNames_L2_25[pos], " -> ", Set( PCFs_L2_25, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );
@@ -635,7 +629,7 @@ od;
 ## Conclusion: No elements of order 3 in L2(25) fuse to 3A of Suz 
 
 
-## Fusions from A7 to Suz :
+## 11(j). Fusion from A7 to Suz :
 
 for pos in PosClasses3_A7 do
    Print( " ", ClNames_A7[pos], " -> ", Set( PCFs_A7, cf -> ClNames_Suz[ cf[ pos ] ]), "\n"  );

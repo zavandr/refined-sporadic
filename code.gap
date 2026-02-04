@@ -328,9 +328,9 @@ od;
 ##  Fusion into class 3b of U6(2) from its maximal subgroups U5(2) and M22  
 ## 
 
-CharTable_U6_2 := CharacterTable( "U6(2)" );;                             ## character tables
-CharTable_U5_2 := CharacterTable( "U5(2)" );;                             ## of U6(2)     
-CharTable_M22  := CharacterTable( "M22"   );;                             ## and its maximal
+CharTable_U6_2 := CharacterTable( "U6(2)" );;                             ## character tables of U6(2),
+CharTable_U5_2 := CharacterTable( "U5(2)" );;                             ## U5(2),
+CharTable_M22  := CharacterTable( "M22"   );;                             ## M22
 
 
 ClNames_U6_2 := ClassNames( CharTable_U6_2 );;                            ## names 
@@ -338,7 +338,7 @@ ClNames_U5_2 := ClassNames( CharTable_U5_2 );;                            ## of 
 ClNames_M22  := ClassNames( CharTable_M22  );;                            ## classes
 
 NrClasses_U5_2 := Size( ClNames_U5_2 );  #  47                            ## numbers of
-NrClasses_M22  := Size( ClNames_M22  );  #  12                            ## conjugacy 
+NrClasses_M22  := Size( ClNames_M22  );  #  12                            ## conjugacy classes
 
 PosClasses3_U5_2 := Filtered( [1..NrClasses_U5_2  ],                           ## positions of
                n -> OrdersClassRepresentatives( CharTable_U5_2 )[n] = 3  );;   ## conjugacy classes
@@ -353,7 +353,7 @@ ClNames_M22 { PosClasses3_M22  };                                         ## of 
 PCFs_U5_2 := PossibleClassFusions( CharTable_U5_2  , CharTable_U6_2 );;   ## possible class fusions
 PCFs_M22  := PossibleClassFusions( CharTable_M22, CharTable_U6_2 );;      ## from maximal subgroups
 
-## Printing fusions of elements of order 3 into U6(2)
+## Printing fusions of elements of order 3 into U6(2) :
 
 
 ## 8(a). Fusion for U5(2) :
@@ -391,7 +391,7 @@ od;
 ## 
 
 CharTable_U5_2  := CharacterTable( "U5(2)"  );;                                 ## character tables of U5(2)
-CharTable_L2_11 := CharacterTable( "L2(11)" );;                                 ## and its maximal subgroup L2(11)
+CharTable_L2_11 := CharacterTable( "L2(11)" );;                                 ## and L2(11)
 
 ClNames_U5_2 := ClassNames( CharTable_U5_2 );;                                  ## names 
 ClNames_L2_11 := ClassNames( CharTable_L2_11 );;                                ## of conjugacy classes
@@ -434,7 +434,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
 # 16738231910400     
 
 ## Conclusion:  The product of three elements in 3A of Suz has order 7 
-## => β_{Suz,7}(3A) ⩽ 3
+## => β_{7,Suz}(3A) ⩽ 3
 
 ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
                                           CharTable_Suz.3a, 
@@ -444,7 +444,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
 # 5828491468800
 
 ## Conclusion: The product of three elements in 3A of Suz has order 13
-## => β_{Suz,13}(3A) ⩽ 3
+## => β_{13,Suz}(3A) ⩽ 3
 
 ###  
 ## Section 11.
@@ -688,6 +688,8 @@ ClNames_PGL2_7{PosClasses3_PGL2_7};  #  [ "3a" ]                                
 PCFs_U3_3   := PossibleClassFusions( CharTable_U3_3  , CharTable_J2 );;            ## possible class fusions
 PCFs_PGL2_7 := PossibleClassFusions( CharTable_PGL2_7, CharTable_J2 );;            ## from maximal subgroups of J2
 
+## Printing class fusions :
+
 ## Fusion of elements of order 3 of U3(3) into J2 : 
 
 for pos in PosClasses3_U3_3 do
@@ -766,7 +768,7 @@ List([ a, b, a*b, (a*b)^3*(b*a)^2*b^2 ], Order);
 c:=b^2;;
 Order(c);  # 3
 Centr_c := Centraliser(U4_3,c);
-Size(Centr_c);  # 5832   ##  => c is in class 3a
+Size(Centr_c);  # 5832   ##  this confirms that c is in class 3a
 
 ## Order of (3a,3a)-generated subgroups:
 
@@ -798,7 +800,7 @@ List( [ a, b, a*b ], Order );
 
 c := b^2;;
 Order(c);                  # 3
-Size(Centraliser(U3_3,c)); # 108                      ## => c is in class 3a
+Size(Centraliser(U3_3,c)); # 108                      ## this confirms that c is in class 3a
 
 Conj := ConjugacyClass(U3_3,c);;
 Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-generated subgroups of U3(3)
@@ -955,7 +957,7 @@ List( [ a, b, a*b, (a*b)^2*b ], Order );
 c := (a*b*(a*b^2)^2)^4;;
 Order(c);                # 3
 Centr_c := Centraliser(U5_2_2,c);;            ## centraliser C of c
-Size(Centr_c);          # 77760               ## => c is in class 3a of  U5(2).2 
+Size(Centr_c);          # 77760               ## this confirms that c is in class 3a of  U5(2).2 
 Conj := ConjugacyClass( U5_2_2, c );;         ## conjugacy class of c
 
 
@@ -1062,7 +1064,7 @@ c := (a*b*a*b*b)^4;;
 
 Order(c);               #  3
 Centr_c := Centraliser(J2,c);;               ## centraliser C of c in J2 
-Size(Centr_c);          #  1080              ##  =>  c is in 3A. 
+Size(Centr_c);          #  1080              ## this confirms that c is in 3A
 Conj := ConjugacyClass(J2,c);;               ## conjugacy class of c in J2
   
 Orbs := OrbitsDomain( Centr_c, Conj );;      ## orbits of C on the conjugacy class
@@ -1072,7 +1074,7 @@ NOrbs := Size(Orbs);    #  10                ## number of orbits
 # [ 3, 12, 24, 60 ]
 
 ## Conclusion : No (3A,3A)-generated subgroup of J2 has order divisible by 7
-##              Therefore,   β_{J₂,7}(3A) = 3
+##              Therefore,   β_{7,J₂}(3A) = 3
 ###
 
 ###  
@@ -1093,7 +1095,7 @@ List( [ a, b, a*b ], Order );
 c := (a*b*a*b^3*a*b^3)^3;;
 Order(c);                # 4
 Centr_c := Centraliser(HS,c);;            ## centraliser C of c in HS
-Size(Centr_c);           # 3840           ##  =>  c is in class 4A 
+Size(Centr_c);           # 3840           ##  this confirms that  c is in class 4A 
 Conj := ConjugacyClass(HS,c);;            ## conjugacy class of c in HS
 Size(Conj);              # 11550
 
@@ -1104,7 +1106,7 @@ NOrbs := Size(Orbs);     #  17            ## number of orbits
 # [ 4, 16, 20, 24, 120, 320, 500, 720, 5040 ]
 
 ## Conclusion : No (4A,4A)-generated subgroup of HS has order divisible by 11
-##              Therefore,   β_{HS,11}(4A) = 3
+##              Therefore,   β_{11,HS}(4A) = 3
 ###
 
 ###  
@@ -1126,7 +1128,7 @@ List( [ a, b, a*b, (a*b)^4*(b*a)^2*b^2*a*b^2 ], Order );
 c := (a*b^2)^4;;
 Order(c);                       #  3
 Centr_c := Centraliser(McL,c);;            ## centraliser C of c in McL
-Size(Centr_c);                  #  29160   ## => c is in class 3A   
+Size(Centr_c);                  #  29160   ## this confirms that c is in class 3A   
 Conj := ConjugacyClass(McL,c);;            ## conjugacy class of c in McL
 Size(Conj);                     #  30800
 
@@ -1137,7 +1139,7 @@ NOrbs := Size(Orbs);            #  10      ## number of orbits
 #  [ 3, 9, 24, 120, 375 ]                  ## not divisible by 7 or 11
 
 ## Conclusion : No (3A,3A)-generated subgroup of McL has order divisible by either 7 or 11
-##              Therefore,   β_{McL,r}(3A) = 3,  r = 7, 11
+##              Therefore,   β_{r,McL}(3A) = 3,  r = 7, 11
 ###
 
 ### END ###

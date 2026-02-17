@@ -350,8 +350,8 @@ ClNames_U5_2{ PosClasses3_U5_2 };                                         ##
 ClNames_M22 { PosClasses3_M22  };                                         ## of elements of order 3 
 # [ "3a" ]                                                                ##
 
-PCFs_U5_2 := PossibleClassFusions( CharTable_U5_2  , CharTable_U6_2 );;   ## possible class fusions
-PCFs_M22  := PossibleClassFusions( CharTable_M22, CharTable_U6_2 );;      ## from maximal subgroups
+PCFs_U5_2 := PossibleClassFusions( CharTable_U5_2, CharTable_U6_2 );;     ## possible class fusions
+PCFs_M22  := PossibleClassFusions( CharTable_M22,  CharTable_U6_2 );;     ## from maximal subgroups
 
 ## Printing fusions of elements of order 3 into U6(2) :
 
@@ -404,7 +404,7 @@ PosClasses3_L2_11 := Filtered( [1..NrClasses_L2_11  ],                          
 ClNames_L2_11{ PosClasses3_L2_11 }; #  [ "3a" ]                                 ## names of conjugacy classes 
                                                                                 ## of elements of order 3 
 
-PCFs_L2_11 := PossibleClassFusions( CharTable_L2_11  , CharTable_U5_2 );;       ## possible class Fusion from maximal subgroup
+PCFs_L2_11 := PossibleClassFusions( CharTable_L2_11, CharTable_U5_2 );;         ## possible class Fusion from maximal subgroup
 
 
 ## Printing Fusion from L2(11) of elements of order 3 into U5(2) 
@@ -657,7 +657,6 @@ od;
 ###
 
 
-
 ###
 ## Section 12.
 ##
@@ -685,7 +684,7 @@ PosClasses3_PGL2_7 :=     Filtered([1..NrClasses_PGL2_7],                       
 ClNames_U3_3  {PosClasses3_U3_3  };  #  [ "3a", "3b" ]                             ## names of conjugacy classes
 ClNames_PGL2_7{PosClasses3_PGL2_7};  #  [ "3a" ]                                   ## of elements of order 3
 
-PCFs_U3_3   := PossibleClassFusions( CharTable_U3_3  , CharTable_J2 );;            ## possible class fusions
+PCFs_U3_3   := PossibleClassFusions( CharTable_U3_3,   CharTable_J2 );;            ## possible class fusions
 PCFs_PGL2_7 := PossibleClassFusions( CharTable_PGL2_7, CharTable_J2 );;            ## from maximal subgroups of J2
 
 ## Printing class fusions :
@@ -800,7 +799,7 @@ List( [ a, b, a*b ], Order );
 
 c := b^2;;
 Order(c);                  # 3
-Size(Centraliser(U3_3,c)); # 108                      ## this confirms that c is in class 3a
+Size(Centraliser(U3_3,c)); # 108                          ## this confirms that c is in class 3a
 
 Conj := ConjugacyClass(U3_3,c);;
 Set(Combinations(Elements(Conj),2),k-> Size(Group(k)));   ##  Sizes of (3a,3a)-generated subgroups of U3(3)

@@ -461,7 +461,7 @@ CharTable_SuzM5 := CharacterTable("SuzM5");  # CharacterTable( "3^5:M11" )      
 CharTable_SuzM6 := CharacterTable("SuzM6");  # CharacterTable( "J2.2" )            ## J2:2,
 CharTable_SuzM8 := CharacterTable("SuzM8");  # CharacterTable( "(a4xpsl(3,4)):2" ) ## (A4 x L3(4)):2,
 CharTable_SuzM10:= CharacterTable("SuzM10"); # CharacterTable( "M12.2" )           ## M12:2,
-CharTable_L3_3_2:= CharacterTable("L3(3).2");                                      ## L3(3):2,
+CharTable_L3_3_2:= CharacterTable("L3(3).2");# CharacterTable( "L3(3).2" )         ## L3(3):2,
 CharTable_L2_25 := CharacterTable("SuzM16"); # CharacterTable( "L2(25)" )          ## L2(25),
 CharTable_A7    := CharacterTable("SuzM17"); # CharacterTable( "A7" )              ## A7
 

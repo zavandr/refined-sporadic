@@ -521,16 +521,16 @@ ClNames_L3_3_2{PosClasses3_L3_3_2}; # [ "3a", "3b" ]                            
 ClNames_L2_25{PosClasses3_L2_25};   # [ "3a" ]                                     ## 
 ClNames_A7{PosClasses3_A7};         # [ "3a", "3b" ]                               ## 
 
-PCFs_G2_4  := PossibleClassFusions( CharTable_G2_4,  CharTable_Suz );;             ## possible class fusions
-PCFs_SuzM2 := PossibleClassFusions( CharTable_SuzM2, CharTable_Suz );;             ## from maximal
-PCFs_U5_2  := PossibleClassFusions( CharTable_U5_2, CharTable_Suz );;              ## subgroups
-PCFs_SuzM5 := PossibleClassFusions( CharTable_SuzM5, CharTable_Suz );;             ## into Suz
-PCFs_SuzM6 := PossibleClassFusions( CharTable_SuzM6, CharTable_Suz );;             ## 
-PCFs_SuzM8 := PossibleClassFusions( CharTable_SuzM8, CharTable_Suz );;             ## 
+PCFs_G2_4  := PossibleClassFusions( CharTable_G2_4,   CharTable_Suz );;            ## possible class fusions
+PCFs_SuzM2 := PossibleClassFusions( CharTable_SuzM2,  CharTable_Suz );;            ## from maximal
+PCFs_U5_2  := PossibleClassFusions( CharTable_U5_2,   CharTable_Suz );;            ## subgroups
+PCFs_SuzM5 := PossibleClassFusions( CharTable_SuzM5,  CharTable_Suz );;            ## into Suz
+PCFs_SuzM6 := PossibleClassFusions( CharTable_SuzM6,  CharTable_Suz );;            ## 
+PCFs_SuzM8 := PossibleClassFusions( CharTable_SuzM8,  CharTable_Suz );;            ## 
 PCFs_SuzM10:= PossibleClassFusions( CharTable_SuzM10, CharTable_Suz );;            ## 
 PCFs_L3_3_2:= PossibleClassFusions( CharTable_L3_3_2, CharTable_Suz );;            ## 
-PCFs_L2_25 := PossibleClassFusions( CharTable_L2_25, CharTable_Suz );;             ## 
-PCFs_A7    := PossibleClassFusions( CharTable_A7, CharTable_Suz );;                ##
+PCFs_L2_25 := PossibleClassFusions( CharTable_L2_25,  CharTable_Suz );;            ## 
+PCFs_A7    := PossibleClassFusions( CharTable_A7,     CharTable_Suz );;            ##
 
 ## Printing class fusions of elements of order 3 into Suz :
 

@@ -433,7 +433,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
                                           CharTable_Suz.7a ] );    ##  n( 3A, 3A, 3A, 7A )
 # 16738231910400     
 
-## Conclusion:  The product of three elements in 3A of Suz has order 7 
+## Conclusion:  The product of some three elements in 3A of Suz has order 7 
 ## => β_{7,Suz}(3A) ⩽ 3
 
 ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a, 
@@ -443,7 +443,7 @@ ClassStructureCharTable( CharTable_Suz, [ CharTable_Suz.3a,
 
 # 5828491468800
 
-## Conclusion: The product of three elements in 3A of Suz has order 13
+## Conclusion: The product of some three elements in 3A of Suz has order 13
 ## => β_{13,Suz}(3A) ⩽ 3
 
 ###  
